@@ -1,4 +1,5 @@
 import React from "react";
+import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { Controls } from "./Controls";
 interface VideoPlayerProps
   extends React.DetailedHTMLProps<
@@ -7,11 +8,17 @@ interface VideoPlayerProps
   > {}
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
-  const video = React.useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = React.useState(false);
-  const [muted, setMuted] = React.useState(false);
-  const [time, setTime] = React.useState(0);
-  const [buffer, setBuffer] = React.useState(0);
+  const {
+    video,
+    playing,
+    setPlaying,
+    muted,
+    setMuted,
+    time,
+    setTime,
+    buffer,
+    setBuffer,
+  } = useVideoPlayer();
 
   const handleTimeUpdate = () => {
     if (!video.current) return;
