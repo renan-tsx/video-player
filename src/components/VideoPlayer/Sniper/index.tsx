@@ -1,4 +1,4 @@
-import { DualRing, DualRingAfter } from "./styles";
+import { Container, DualRing, DualRingAfter } from "./styles";
 
 interface SniperProps {
   speed?: number;
@@ -6,10 +6,12 @@ interface SniperProps {
   color?: string;
 }
 
-export const Sniper = ({ speed, size, color }: SniperProps) => {
+export const Sniper = ({ speed, size = "50px", color }: SniperProps) => {
   return (
-    <DualRing size={size}>
-      <DualRingAfter speed={speed} size={size} color={color} />
-    </DualRing>
+    <Container size={size} speed={speed} color={color}>
+      <DualRing>
+        <DualRingAfter />
+      </DualRing>
+    </Container>
   );
 };

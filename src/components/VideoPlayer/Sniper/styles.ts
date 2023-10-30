@@ -1,10 +1,8 @@
 import styled, { keyframes } from "styled-components";
-
 interface DualRingProps {
   size?: string | number;
   color?: string;
 }
-
 interface DualRingAfterProps extends DualRingProps {
   speed?: number;
 }
@@ -27,12 +25,14 @@ const getColor = (color?: string): string => {
 };
 
 const DualRingAnimation = keyframes`
-0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+`;
+
+export const Container = styled.div<DualRingAfterProps>`
+  left: calc(50% - ${({ size }) => getSize(size)});
+  top: calc(50% - ${({ size }) => getSize(size)});
+  position: absolute;
 `;
 
 export const DualRing = styled.div<DualRingProps>`
