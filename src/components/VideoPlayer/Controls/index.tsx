@@ -6,20 +6,15 @@ import {
   FaVolumeXmark,
 } from "react-icons/fa6";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
+import { ButtonPlayPause } from "../ButtonPlayPause";
+import { ButtonSkip } from "../ButtonSkip";
 import { IconPause } from "../IconPause";
 import { IconPlay } from "../IconPlay";
+import { Container } from "./styles";
 
 export const Controls = () => {
-  const {
-    video,
-    playing,
-    setPlaying,
-    muted,
-    setMuted,
-    time,
-    setTime,
-    buffer,
-  } = useVideoPlayer();
+  const { video, playing, setPlaying, muted, setMuted, time, setTime, buffer } =
+    useVideoPlayer();
 
   const forward = () => {
     if (!video.current) return;
@@ -57,6 +52,11 @@ export const Controls = () => {
 
   return (
     <>
+      <Container style={{ display: "flex", gap: 0 }}>
+        <ButtonPlayPause />
+        <ButtonSkip skip={"backward"} />
+        <ButtonSkip skip={"forward"} />
+      </Container>
       <div className="flex">
         {playing ? (
           <button

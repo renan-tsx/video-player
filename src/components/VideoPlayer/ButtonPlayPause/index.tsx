@@ -1,27 +1,32 @@
+import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
+import { IconPause } from "../IconPause";
+import { IconPlay } from "../IconPlay";
+import { Button } from "./styles";
 
-interface ButtonPlayPauseProps {
-  video: React.RefObject<HTMLVideoElement>
-}
+export const ButtonPlayPause = () => {
+  const { video, playing, setPlaying } = useVideoPlayer();
 
-export const ButtonPlayPause = ({video}: ButtonPlayPauseProps) => {
   return (
-    {playing ? (
-      <button
-        onClick={() => {
-          video.current?.pause();
-          setPlaying(false);
-        }}
-      >
-        <FaPause />
-      </button>
-    ) : (
-      <button
-        onClick={() => {
-          video.current?.play();
-          setPlaying(true);
-        }}
-      >
-        <FaPlay />
-      </button>
-    )}
-  )
+    <>
+      {playing ? (
+        <Button
+          onClick={() => {
+            video.current?.pause();
+            setPlaying(false);
+          }}
+        >
+          <IconPause />
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            video.current?.play();
+            setPlaying(true);
+          }}
+        >
+          <IconPlay />
+        </Button>
+      )}
+    </>
+  );
+};

@@ -6,5 +6,5 @@ export const Container = styled.div`
 
   background: var(--black);
   position: absolute;
-  bottom: 0;
+  bottom: 250px; // teste
 `;

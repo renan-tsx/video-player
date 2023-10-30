@@ -37,7 +37,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
 
       currentVideo.addEventListener("timeupdate", handler);
 
-      // Prevent memory leak
+      // NOTE Prevent memory leak
       return () => currentVideo.removeEventListener("timeupdate", handler);
     }
   }, [video, setTime, setBuffer]);

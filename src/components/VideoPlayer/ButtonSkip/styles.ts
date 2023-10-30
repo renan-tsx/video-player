@@ -15,11 +15,9 @@ export const Button = styled.button`
   box-shadow: none;
   border-radius: 0;
 
-  & > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover,
   &:focus {
