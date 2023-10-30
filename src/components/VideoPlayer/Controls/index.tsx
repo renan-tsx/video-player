@@ -5,30 +5,22 @@ import {
   FaVolumeLow,
   FaVolumeXmark,
 } from "react-icons/fa6";
+import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { IconPause } from "../IconPause";
 import { IconPlay } from "../IconPlay";
 
-interface ControlsProps {
-  playing: boolean;
-  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-  video: React.RefObject<HTMLVideoElement>;
-  muted: boolean;
-  setMuted: React.Dispatch<React.SetStateAction<boolean>>;
-  time: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
-  buffer: number;
-}
+export const Controls = () => {
+  const {
+    video,
+    playing,
+    setPlaying,
+    muted,
+    setMuted,
+    time,
+    setTime,
+    buffer,
+  } = useVideoPlayer();
 
-export const Controls = ({
-  video,
-  playing,
-  setPlaying,
-  muted,
-  setMuted,
-  time,
-  setTime,
-  buffer,
-}: ControlsProps) => {
   const forward = () => {
     if (!video.current) return;
     video.current.currentTime += 5;
