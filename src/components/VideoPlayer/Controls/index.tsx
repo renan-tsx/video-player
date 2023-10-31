@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa6";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { ButtonFullScreen } from "../ButtonFullScreen";
+import { ButtonMute } from "../ButtonMute";
 import { ButtonPlayPause } from "../ButtonPlayPause";
 import { ButtonSkip } from "../ButtonSkip";
 import { ButtonSpeed } from "../ButtonSpeed";
@@ -42,9 +43,7 @@ export const Controls = () => {
 
   const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!video.current) return;
-    console.log(video);
     const volume = Number(e.target.value) / 100;
-    console.log(volume);
     video.current.volume = volume;
   };
 
@@ -63,6 +62,7 @@ export const Controls = () => {
         </Box>
         <Box>
           <ButtonVolume />
+          <ButtonMute />
           <ButtonSpeed options={[2, 1.75, 1.5, 1.25, 1, 0.75]} />
           <ButtonFullScreen />
         </Box>

@@ -10,4 +10,6 @@ export interface IVideoPlayerContext {
   setBuffer: React.Dispatch<React.SetStateAction<number>>;
   playbackRate: number;
   setPlaybackRate: React.Dispatch<React.SetStateAction<number>>;
+  volume: number;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
 }

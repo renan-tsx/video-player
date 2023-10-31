@@ -1,19 +1,26 @@
-import { FaVolumeLow, FaVolumeXmark } from "react-icons/fa6";
+import React from "react";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
-import { Button } from "./styles";
+import { Box } from "./styles";
 
 export const ButtonVolume = () => {
-  const { video, muted, setMuted } = useVideoPlayer();
+  const { video, volume, setVolume } = useVideoPlayer();
 
-  const mute = () => {
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!video.current) return;
-    video.current.muted = !video.current.muted;
-    setMuted(!video.current.muted);
+    const volume = Number(e.target.value);
+    setVolume(volume);
+    video.current.volume = volume / 100;
   };
 
   return (
-    <Button onClick={mute}>
-      {muted ? <FaVolumeLow /> : <FaVolumeXmark />}
-    </Button>
+    <Box>
+      <input
+        type="range"
+        min={0}
+        max={100}
+        defaultValue={volume}
+        onChange={changeVolume}
+      />
+    </Box>
   );
 };

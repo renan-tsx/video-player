@@ -13,6 +13,7 @@ export const VideoPlayerContextProvider = ({
   const [time, setTime] = React.useState(0);
   const [buffer, setBuffer] = React.useState(0);
   const [playbackRate, setPlaybackRate] = React.useState(1);
+  const [volume, setVolume] = React.useState(50);
 
   return (
     <VideoPlayerContext.Provider
@@ -27,7 +28,9 @@ export const VideoPlayerContextProvider = ({
         buffer,
         setBuffer,
         playbackRate,
-        setPlaybackRate
+        setPlaybackRate,
+        volume,
+        setVolume,
       }}
     >
       {children}

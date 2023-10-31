@@ -1,57 +1,99 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  position: relative;
-`;
+interface BoxProps {
+  children: {
+    props: {
+      defaultValue: number;
+    };
+  };
+}
 
-export const Button = styled.button`
-  width: 50px;
-  height: 50px;
-
-  border: 0;
-  cursor: pointer;
-  overflow: hidden;
-  background: var(--black);
-  color: var(--white);
-  font-size: 1rem;
-  text-align: center;
-  padding: 0 0.625rem;
-  font-size: 1.4rem;
-  box-shadow: none;
-  border-radius: 0;
-
+export const Box = styled.div<BoxProps>`
   display: flex;
-  align-items: center;
-  justify-content: center;
 
-  &:hover,
-  &:focus {
-    background: var(--gray-600);
-    box-shadow: none;
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 7rem;
+    border: 0;
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+
+    /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+    /******************************************************** */
+
+    /* slider track */
+    &::-webkit-slider-runnable-track {
+      /* background-color: var(--white); */
+      background: linear-gradient(
+        to right,
+        var(--white) 0%,
+        var(--white)
+          ${({ children }) => {
+            const percentage = children.props.defaultValue;
+            return `${percentage}%`;
+          }},
+        var(--gray-500)
+          ${({ children }) => {
+            const percentage = children.props.defaultValue;
+            return `${percentage}%`;
+          }},
+        var(--gray-500) 100%
+      );
+      border-radius: 0.5rem;
+      height: 2px;
+    }
+
+    /* slider thumb */
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -4px; /* Centers thumb on the track */
+
+      /*custom styles*/
+      background-color: var(--white);
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+    }
+
+    /* &:focus::-webkit-slider-thumb {
+      border: 1px solid var(--white);
+      outline: 3px solid var(--white);
+      outline-offset: 0.125rem;
+    } */
   }
 
-  &:active {
-    background: var(--black);
-    box-shadow: none;
+  /******** Firefox styles ********/
+  /****************************** */
+
+  /* slider track */
+  input[type="range"]::-moz-range-track {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    height: 2px;
   }
 
-  &:hover + div {
-    opacity: 1;
-  }
-`;
+  /* slider thumb */
+  input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
 
-export const PlayBackMenu = styled.div`
-  position: absolute;
-  bottom: 50px;
-  opacity: 0;
-
-  &:hover {
-    opacity: 1;
+    /*custom styles*/
+    background-color: var(--white);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
   }
 
-  button {
-    height: initial;
-    font-size: 1rem;
-    padding: 2px;
-  }
+  /* input[type="range"]:focus::-moz-range-thumb {
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem;
+  } */
 `;
