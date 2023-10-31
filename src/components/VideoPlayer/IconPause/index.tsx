@@ -1,9 +1,9 @@
-import { FaCirclePause } from "react-icons/fa6";
+import { FaPause } from "react-icons/fa6";
 
 export const IconPause = () => {
   return (
     <div>
-      <FaCirclePause />
+      <FaPause />
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import { FaCirclePlay } from "react-icons/fa6";
+import { FaPlay } from "react-icons/fa6";
 
 export const IconPlay = () => {
   return (
     <div>
-      <FaCirclePlay />
+      <FaPlay />
     </div>
   );
 };
