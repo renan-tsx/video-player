@@ -7,13 +7,13 @@ export const ButtonMute = () => {
 
   const mute = () => {
     if (!video.current) return;
-    video.current.muted = !video.current.muted;
     setMuted(!video.current.muted);
+    video.current.muted = !video.current.muted;
   };
 
   return (
     <Button onClick={mute}>
-      {muted ? <FaVolumeLow /> : <FaVolumeXmark />}
+      {muted ? <FaVolumeXmark /> : <FaVolumeLow />}
     </Button>
   );
 };

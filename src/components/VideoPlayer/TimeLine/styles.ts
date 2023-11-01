@@ -9,7 +9,7 @@ interface IContainer {
 export const Container = styled.div<IContainer>`
   width: 100%;
   position: absolute;
-  top: -27px;
+  top: -36px;
   background: var(--timeline-bg);
   overflow: hidden;
 
