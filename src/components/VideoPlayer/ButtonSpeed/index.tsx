@@ -6,13 +6,7 @@ interface ButtonSpeedProps {
 }
 
 export const ButtonSpeed = ({ options }: ButtonSpeedProps) => {
-  const { video, playbackRate, setPlaybackRate } = useVideoPlayer();
-
-  const changePlayBackRate = (speed: number) => {
-    if (!video.current) return;
-    setPlaybackRate(speed);
-    video.current.playbackRate = speed;
-  };
+  const { playbackRate, actions } = useVideoPlayer();
 
   return (
     <Container>
@@ -22,7 +16,7 @@ export const ButtonSpeed = ({ options }: ButtonSpeedProps) => {
           return (
             <Button
               key={option}
-              onClick={() => changePlayBackRate(option)}
+              onClick={() => actions.changePlayBackRate(option)}
               active={playbackRate === option}
             >
               {option}x

@@ -26,9 +26,56 @@ export const VideoPlayerContextProvider = ({
     setPlaying(!playing);
   };
 
-  const actions = {
-    onPlayPause
+  const mute = () => {
+    if (!video.current) return;
+    setMuted(!video.current.muted);
+    video.current.muted = !video.current.muted;
+  };
+
+  const forward = () => {
+    if (!video.current) return;
+    video.current.currentTime += 5;
+  };
+
+  const backward = () => {
+    if (!video.current) return;
+    video.current.currentTime -= 5;
+  };
+
+  const changePlayBackRate = (speed: number) => {
+    if (!video.current) return;
+    setPlaybackRate(speed);
+    video.current.playbackRate = speed;
+  };
+
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!video.current) return;
+    const volume = Number(e.target.value);
+    setVolume(volume);
+    video.current.volume = volume / 100;
+  };
+
+  const toggleFullScreen = () => {
+    if (!video.current) return;
+    video.current.requestFullscreen();
+  };
+
+  const toggleTimeLine = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!video.current) return;
+    video.current.currentTime = +e.target.value;
+    setTime(video.current.currentTime);
   }
+
+  const actions = {
+    onPlayPause,
+    mute,
+    forward,
+    backward,
+    changePlayBackRate,
+    changeVolume,
+    toggleFullScreen,
+    toggleTimeLine
+  };
 
   return (
     <VideoPlayerContext.Provider

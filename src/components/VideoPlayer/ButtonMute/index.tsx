@@ -3,16 +3,10 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Button } from "./styles";
 
 export const ButtonMute = () => {
-  const { video, muted, setMuted } = useVideoPlayer();
-
-  const mute = () => {
-    if (!video.current) return;
-    setMuted(!video.current.muted);
-    video.current.muted = !video.current.muted;
-  };
+  const { muted, actions } = useVideoPlayer();
 
   return (
-    <Button onClick={mute}>
+    <Button onClick={actions.mute}>
       {muted ? <FaVolumeXmark /> : <FaVolumeLow />}
     </Button>
   );

@@ -3,15 +3,10 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Button } from "./styles";
 
 export const ButtonFullScreen = () => {
-  const { video } = useVideoPlayer();
-
-  const toggleFullScreen = () => {
-    if (!video.current) return;
-    video.current.requestFullscreen();
-  };
+  const { actions } = useVideoPlayer();
 
   return (
-    <Button onClick={toggleFullScreen}>
+    <Button onClick={actions.toggleFullScreen}>
       <FaExpand />
     </Button>
   );

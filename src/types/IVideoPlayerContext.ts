@@ -14,5 +14,12 @@ export interface IVideoPlayerContext {
   setVolume: React.Dispatch<React.SetStateAction<number>>;
   actions: {
     onPlayPause: () => void;
+    mute: () => void;
+    forward: () => void;
+    backward: () => void;
+    changePlayBackRate: (speed: number) => void;
+    changeVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    toggleFullScreen: () => void;
+    toggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 }
