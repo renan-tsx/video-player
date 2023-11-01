@@ -55,7 +55,7 @@ export const Controls = () => {
 
   return (
     <>
-      <Container style={{ display: "flex", gap: 0 }}>
+      <Container className="controls" style={{ display: "flex", gap: 0 }}>
         <TimeLine />
         <Box>
           <ButtonPlayPause />

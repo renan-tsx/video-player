@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  /* display: flex; */
+  display: none;
+  opacity: 0;
+  transition: 0.3s;
+
   justify-content: space-between;
 
   width: 100%;
@@ -10,6 +14,11 @@ export const Container = styled.div`
   background: var(--black);
   position: absolute;
   bottom: 0;
+
+  &:hover {
+    display: flex;
+    opacity: 1;
+  }
 `;
 
 export const Box = styled.div`
