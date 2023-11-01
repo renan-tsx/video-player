@@ -12,4 +12,7 @@ export interface IVideoPlayerContext {
   setPlaybackRate: React.Dispatch<React.SetStateAction<number>>;
   volume: number;
   setVolume: React.Dispatch<React.SetStateAction<number>>;
+  actions: {
+    onPlayPause: () => void;
+  };
 }

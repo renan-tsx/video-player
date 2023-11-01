@@ -15,6 +15,21 @@ export const VideoPlayerContextProvider = ({
   const [playbackRate, setPlaybackRate] = React.useState(1);
   const [volume, setVolume] = React.useState(50);
 
+  const onPlayPause = () => {
+    if (playing) {
+      video.current?.pause();
+      setPlaying(!playing);
+      return;
+    }
+
+    video.current?.play();
+    setPlaying(!playing);
+  };
+
+  const actions = {
+    onPlayPause
+  }
+
   return (
     <VideoPlayerContext.Provider
       value={{
@@ -31,6 +46,7 @@ export const VideoPlayerContextProvider = ({
         setPlaybackRate,
         volume,
         setVolume,
+        actions,
       }}
     >
       {children}
