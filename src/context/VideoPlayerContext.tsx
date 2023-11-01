@@ -55,16 +55,34 @@ export const VideoPlayerContextProvider = ({
     video.current.volume = volume / 100;
   };
 
+  interface FullscreenElement {
+    requestFullscreen?: () => Promise<void>;
+    mozRequestFullScreen?: () => void;
+    webkitRequestFullscreen?: () => void;
+    msRequestFullscreen?: () => void;
+  }
+
   const toggleFullScreen = () => {
     if (!video.current) return;
-    video.current.requestFullscreen();
+
+    const e = document.documentElement as FullscreenElement;
+
+    if (e.requestFullscreen) {
+      e.requestFullscreen();
+    } else if (e.mozRequestFullScreen) {
+      e.mozRequestFullScreen(); // Firefox
+    } else if (e.webkitRequestFullscreen) {
+      e.webkitRequestFullscreen(); // Chrome, Safari and Opera
+    } else if (e.msRequestFullscreen) {
+      e.msRequestFullscreen(); // IE/Edge
+    }
   };
 
   const toggleTimeLine = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!video.current) return;
     video.current.currentTime = +e.target.value;
     setTime(video.current.currentTime);
-  }
+  };
 
   const actions = {
     onPlayPause,
@@ -74,7 +92,7 @@ export const VideoPlayerContextProvider = ({
     changePlayBackRate,
     changeVolume,
     toggleFullScreen,
-    toggleTimeLine
+    toggleTimeLine,
   };
 
   return (
