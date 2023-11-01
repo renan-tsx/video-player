@@ -23,7 +23,7 @@ const handleTimeUpdateAndBuffer = ({
 };
 
 export const VideoPlayer = (props: IVideoPlayerProps) => {
-  const { video, setTime, setBuffer } = useVideoPlayer();
+  const { video, setTime, setBuffer, actions } = useVideoPlayer();
 
   useEffect(() => {
     const currentVideo = video.current;
@@ -45,7 +45,14 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
 
   return (
     <div style={{ aspectRatio: 16 / 9 }}>
-      <Video ref={video} {...props}></Video>
+      <Video
+        ref={video}
+        {...props}
+        onClick={actions.onPlayPause}
+        controlsList="nodownload"
+        playsInline
+        controls={false}
+      ></Video>
       <Controls />
     </div>
   );
