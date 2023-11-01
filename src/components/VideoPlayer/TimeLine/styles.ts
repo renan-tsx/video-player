@@ -21,7 +21,8 @@ export const Container = styled.div<IContainer>`
     background: transparent;
     cursor: pointer;
     border: 0;
-    /* padding: 0; */
+    padding: 1rem;
+    height: 0;
 
     &:focus {
       box-shadow: none;
@@ -116,6 +117,8 @@ export const Container = styled.div<IContainer>`
       width: 10px;
       border-radius: 50%;
       border: 2px solid var(--white);
+      padding: 0;
+      box-sizing: border-box;
     }
 
     /* input[type="range"]:focus::-moz-range-thumb {
