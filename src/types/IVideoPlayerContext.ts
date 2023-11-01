@@ -12,6 +12,8 @@ export interface IVideoPlayerContext {
   setPlaybackRate: React.Dispatch<React.SetStateAction<number>>;
   volume: number;
   setVolume: React.Dispatch<React.SetStateAction<number>>;
+  fullScreen: boolean;
+  setFullScreen: React.Dispatch<React.SetStateAction<boolean>>;
   actions: {
     onPlayPause: () => void;
     mute: () => void;

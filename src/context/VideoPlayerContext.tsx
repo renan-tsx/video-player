@@ -14,6 +14,7 @@ export const VideoPlayerContextProvider = ({
   const [buffer, setBuffer] = React.useState(0);
   const [playbackRate, setPlaybackRate] = React.useState(1);
   const [volume, setVolume] = React.useState(50);
+  const [fullScreen, setFullScreen] = React.useState(false);
 
   const onPlayPause = () => {
     if (playing) {
@@ -62,19 +63,25 @@ export const VideoPlayerContextProvider = ({
     msRequestFullscreen?: () => void;
   }
 
-  const toggleFullScreen = () => {
+  const toggleFullScreen = async () => {
     if (!video.current) return;
 
     const e = document.documentElement as FullscreenElement;
 
-    if (e.requestFullscreen) {
-      e.requestFullscreen();
-    } else if (e.mozRequestFullScreen) {
-      e.mozRequestFullScreen(); // Firefox
-    } else if (e.webkitRequestFullscreen) {
-      e.webkitRequestFullscreen(); // Chrome, Safari and Opera
-    } else if (e.msRequestFullscreen) {
-      e.msRequestFullscreen(); // IE/Edge
+    if (document.fullscreenElement !== null) {
+      await document.exitFullscreen();
+      setFullScreen(!fullScreen);
+    } else {
+      if (e.requestFullscreen) {
+        e.requestFullscreen();
+      } else if (e.mozRequestFullScreen) {
+        e.mozRequestFullScreen(); // Firefox
+      } else if (e.webkitRequestFullscreen) {
+        e.webkitRequestFullscreen(); // Chrome, Safari and Opera
+      } else if (e.msRequestFullscreen) {
+        e.msRequestFullscreen(); // IE/Edge
+      }
+      setFullScreen(!fullScreen);
     }
   };
 
@@ -112,6 +119,8 @@ export const VideoPlayerContextProvider = ({
         volume,
         setVolume,
         actions,
+        fullScreen,
+        setFullScreen,
       }}
     >
       {children}

@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface IContainer {
+  fullScreen: boolean;
+}
+
+export const Container = styled.div<IContainer>`
   /* display: flex; */
-  display: none;
-  opacity: 0;
+  display: ${({ fullScreen }) => (fullScreen ? "flex" : "none")};
+  opacity: ${({ fullScreen }) => (fullScreen ? 1 : 0)};
+  position: ${({ fullScreen }) => (fullScreen ? "fixed" : "absolute")};
+
   transition: 0.3s;
 
   justify-content: space-between;
@@ -12,8 +18,8 @@ export const Container = styled.div`
   min-height: 50px;
 
   background: var(--black);
-  position: absolute;
   bottom: 0;
+  left: 0;
 
   &:hover {
     display: flex;

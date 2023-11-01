@@ -3,7 +3,7 @@ import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { IVideoPlayerContext } from "../../types/IVideoPlayerContext";
 import { IVideoPlayerProps } from "../../types/IVideoPlayerProps";
 import { Controls } from "./Controls";
-import { Video } from "./styles";
+import { Container, Video } from "./styles";
 
 const handleTimeUpdateAndBuffer = ({
   video,
@@ -23,7 +23,7 @@ const handleTimeUpdateAndBuffer = ({
 };
 
 export const VideoPlayer = (props: IVideoPlayerProps) => {
-  const { video, setTime, setBuffer, actions } = useVideoPlayer();
+  const { video, fullScreen, setTime, setBuffer, actions } = useVideoPlayer();
 
   useEffect(() => {
     const currentVideo = video.current;
@@ -44,7 +44,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
   }, [video, setTime, setBuffer]);
 
   return (
-    <div style={{ aspectRatio: 16 / 9 }}>
+    <Container fullScreen={fullScreen}>
       <Video
         ref={video}
         {...props}
@@ -54,6 +54,6 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         controls={false}
       ></Video>
       <Controls />
-    </div>
+    </Container>
   );
 };

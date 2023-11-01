@@ -6,6 +6,7 @@
 //   FaVolumeXmark,
 // } from "react-icons/fa6";
 // import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
+import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { ButtonFullScreen } from "../ButtonFullScreen";
 import { ButtonMute } from "../ButtonMute";
 import { ButtonPlayPause } from "../ButtonPlayPause";
@@ -18,6 +19,7 @@ import { TimeLine } from "../TimeLine";
 import { Box, Container } from "./styles";
 
 export const Controls = () => {
+  const { fullScreen } = useVideoPlayer();
   // const { video, playing, setPlaying, muted, setMuted, time, setTime, buffer } =
   //   useVideoPlayer();
 
@@ -55,7 +57,11 @@ export const Controls = () => {
 
   return (
     <>
-      <Container className="controls" style={{ display: "flex", gap: 0 }}>
+      <Container
+        className="controls"
+        fullScreen={fullScreen}
+        style={{ display: "flex", gap: 0 }}
+      >
         <TimeLine />
         <Box>
           <ButtonPlayPause />
