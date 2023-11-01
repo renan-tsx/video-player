@@ -3,6 +3,7 @@ import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { IVideoPlayerContext } from "../../types/IVideoPlayerContext";
 import { IVideoPlayerProps } from "../../types/IVideoPlayerProps";
 import { Controls } from "./Controls";
+import { Video } from "./styles";
 
 const handleTimeUpdateAndBuffer = ({
   video,
@@ -44,7 +45,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
 
   return (
     <div style={{ aspectRatio: 16 / 9 }}>
-      <video ref={video} {...props}></video>
+      <Video ref={video} {...props}></Video>
       <Controls />
     </div>
   );
