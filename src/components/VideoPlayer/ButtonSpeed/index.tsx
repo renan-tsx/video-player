@@ -11,7 +11,7 @@ export const ButtonSpeed = ({ options }: ButtonSpeedProps) => {
   const changePlayBackRate = (speed: number) => {
     if (!video.current) return;
     setPlaybackRate(speed);
-    video.current.playbackRate = playbackRate;
+    video.current.playbackRate = speed;
   };
 
   return (
@@ -20,7 +20,11 @@ export const ButtonSpeed = ({ options }: ButtonSpeedProps) => {
       <PlayBackMenu>
         {options.map((option) => {
           return (
-            <Button key={option} onClick={() => changePlayBackRate(option)}>
+            <Button
+              key={option}
+              onClick={() => changePlayBackRate(option)}
+              active={playbackRate === option}
+            >
               {option}x
             </Button>
           );

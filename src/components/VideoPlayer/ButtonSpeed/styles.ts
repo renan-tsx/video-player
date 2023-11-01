@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
+interface IButton {
+  active?: boolean;
+}
+
 export const Container = styled.div`
   position: relative;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<IButton>`
   width: 50px;
   height: 50px;
 
   border: 0;
   cursor: pointer;
   overflow: hidden;
-  background: var(--black);
+  background: ${({ active }) => (active ? "var(--gray-500)" : "var(--black)")};
   color: var(--white);
   font-size: 1rem;
   text-align: center;
