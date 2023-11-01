@@ -1,23 +1,27 @@
 import styled from "styled-components";
 
-interface BoxProps {
-  children: {
-    props: {
-      defaultValue: number;
-    };
-  };
+interface IContainer {
+  time: number;
+  max: number | undefined;
+  buffer: number;
 }
 
-export const Box = styled.div<BoxProps>`
-  display: flex;
+export const Container = styled.div<IContainer>`
+  width: 100%;
+  position: absolute;
+  top: -27px;
+  background: var(--timeline-bg);
+  overflow: hidden;
 
   input[type="range"] {
+    width: 100%;
+
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 7rem;
     border: 0;
+    /* padding: 0; */
 
     &:focus {
       box-shadow: none;
@@ -29,22 +33,26 @@ export const Box = styled.div<BoxProps>`
 
     /* slider track */
     &::-webkit-slider-runnable-track {
-      /* background-color: var(--white); */
       background: linear-gradient(
         to right,
         var(--white) 0%,
-        var(--white)
-          ${({ children }) => {
-            const percentage = children.props.defaultValue;
-            return `${percentage}%`;
-          }},
-        var(--gray-500)
-          ${({ children }) => {
-            const percentage = children.props.defaultValue;
-            return `${percentage}%`;
-          }},
-        var(--gray-500) 100%
+        ${({ time, max, buffer }) => {
+          if (max === undefined || max === 0) return "0%";
+          const currentTime = (time / max) * 100;
+          const bufferTime = (buffer / max) * 100;
+          const remainingTime = 100 - currentTime - bufferTime;
+
+          return `
+            var(--white) ${currentTime}%, var(--white) ${currentTime}%,
+            var(--timeline-buffer) ${currentTime}%, var(--timeline-buffer) ${bufferTime}%,
+            var(--timeline-remaining) ${bufferTime}%, var(--timeline-remaining) ${
+            100 - remainingTime
+          }%
+          `;
+        }},
+        var(--timeline-remaining) 100%
       );
+
       border-radius: 0.5rem;
       height: 2px;
     }
@@ -56,10 +64,11 @@ export const Box = styled.div<BoxProps>`
       margin-top: -4px; /* Centers thumb on the track */
 
       /*custom styles*/
-      background-color: var(--white);
+      background-color: var(--black);
       height: 10px;
       width: 10px;
       border-radius: 50%;
+      border: 2px solid var(--white);
     }
 
     /* &:focus::-webkit-slider-thumb {
@@ -78,32 +87,35 @@ export const Box = styled.div<BoxProps>`
       background: linear-gradient(
         to right,
         var(--white) 0%,
-        var(--white)
-          ${({ children }) => {
-            const percentage = children.props.defaultValue;
-            return `${percentage}%`;
-          }},
-        var(--gray-500)
-          ${({ children }) => {
-            const percentage = children.props.defaultValue;
-            return `${percentage}%`;
-          }},
-        var(--gray-500) 100%
+        ${({ time, max, buffer }) => {
+          if (max === undefined || max === 0) return "0%";
+          const currentTime = (time / max) * 100;
+          const bufferTime = (buffer / max) * 100;
+          const remainingTime = 100 - currentTime - bufferTime;
+
+          return `
+            var(--white) ${currentTime}%, var(--white) ${currentTime}%,
+            var(--timeline-buffer) ${currentTime}%, var(--timeline-buffer) ${bufferTime}%,
+            var(--timeline-remaining) ${bufferTime}%, var(--timeline-remaining) ${
+            100 - remainingTime
+          }%
+          `;
+        }},
+        var(--timeline-remaining) 100%
       );
+
       border-radius: 0.5rem;
       height: 2px;
     }
 
     /* slider thumb */
     &::-moz-range-thumb {
-      border: none; /*Removes extra border that FF applies*/
-      border-radius: 0; /*Removes default border-radius that FF applies*/
-
       /*custom styles*/
-      background-color: var(--white);
+      background-color: var(--black);
       height: 10px;
       width: 10px;
       border-radius: 50%;
+      border: 2px solid var(--white);
     }
 
     /* input[type="range"]:focus::-moz-range-thumb {

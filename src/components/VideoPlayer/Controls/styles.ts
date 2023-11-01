@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   background: var(--black);
   position: absolute;
-  bottom: 250px; // teste
+  bottom: 0;
 `;
 
 export const Box = styled.div`

@@ -1,60 +1,62 @@
-import {
-  FaArrowRotateLeft,
-  FaArrowRotateRight,
-  FaExpand,
-  FaVolumeLow,
-  FaVolumeXmark,
-} from "react-icons/fa6";
-import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
+// import {
+//   FaArrowRotateLeft,
+//   FaArrowRotateRight,
+//   FaExpand,
+//   FaVolumeLow,
+//   FaVolumeXmark,
+// } from "react-icons/fa6";
+// import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { ButtonFullScreen } from "../ButtonFullScreen";
 import { ButtonMute } from "../ButtonMute";
 import { ButtonPlayPause } from "../ButtonPlayPause";
 import { ButtonSkip } from "../ButtonSkip";
 import { ButtonSpeed } from "../ButtonSpeed";
 import { ButtonVolume } from "../ButtonVolume";
-import { IconPause } from "../IconPause";
-import { IconPlay } from "../IconPlay";
+// import { IconPause } from "../IconPause";
+// import { IconPlay } from "../IconPlay";
+import { TimeLine } from "../TimeLine";
 import { Box, Container } from "./styles";
 
 export const Controls = () => {
-  const { video, playing, setPlaying, muted, setMuted, time, setTime, buffer } =
-    useVideoPlayer();
+  // const { video, playing, setPlaying, muted, setMuted, time, setTime, buffer } =
+  //   useVideoPlayer();
 
-  const forward = () => {
-    if (!video.current) return;
-    video.current.currentTime += 5;
-  };
+  // const forward = () => {
+  //   if (!video.current) return;
+  //   video.current.currentTime += 5;
+  // };
 
-  const backward = () => {
-    if (!video.current) return;
-    video.current.currentTime -= 5;
-  };
+  // const backward = () => {
+  //   if (!video.current) return;
+  //   video.current.currentTime -= 5;
+  // };
 
-  const changePlayBackRate = (speed: number) => {
-    if (!video.current) return;
-    video.current.playbackRate = speed;
-  };
+  // const changePlayBackRate = (speed: number) => {
+  //   if (!video.current) return;
+  //   video.current.playbackRate = speed;
+  // };
 
-  const mute = () => {
-    if (!video.current) return;
-    video.current.muted = !video.current.muted;
-    setMuted(!video.current.muted);
-  };
+  // const mute = () => {
+  //   if (!video.current) return;
+  //   video.current.muted = !video.current.muted;
+  //   setMuted(!video.current.muted);
+  // };
 
-  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!video.current) return;
-    const volume = Number(e.target.value) / 100;
-    video.current.volume = volume;
-  };
+  // const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (!video.current) return;
+  //   const volume = Number(e.target.value) / 100;
+  //   video.current.volume = volume;
+  // };
 
-  const toggleFullScreen = () => {
-    if (!video.current) return;
-    video.current.requestFullscreen();
-  };
+  // const toggleFullScreen = () => {
+  //   if (!video.current) return;
+  //   video.current.requestFullscreen();
+  // };
 
   return (
     <>
       <Container style={{ display: "flex", gap: 0 }}>
+        <TimeLine />
         <Box>
           <ButtonPlayPause />
           <ButtonSkip skip={"backward"} />
@@ -67,7 +69,7 @@ export const Controls = () => {
           <ButtonFullScreen />
         </Box>
       </Container>
-      <div className="flex">
+      {/* <div className="flex">
         {playing ? (
           <button
             onClick={() => {
@@ -137,7 +139,7 @@ export const Controls = () => {
           max={video.current?.duration}
           style={{ width: "100%" }}
         ></progress>
-      </div>
+      </div> */}
     </>
   );
 };
