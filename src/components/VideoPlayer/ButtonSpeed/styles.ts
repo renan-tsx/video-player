@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IButton {
-  active?: boolean;
+  active?: boolean | undefined;
 }
 
 export const Container = styled.div`
@@ -15,7 +15,9 @@ export const Button = styled.button<IButton>`
   border: 0;
   cursor: pointer;
   overflow: hidden;
-  background: ${({ active }) => (active ? "var(--gray-500)" : "var(--black)")};
+  background: ${({ active }) => {
+    return active ? "var(--gray-500)" : "var(--black)";
+  }};
   color: var(--white);
   font-size: 1rem;
   text-align: center;
