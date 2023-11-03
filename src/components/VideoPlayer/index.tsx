@@ -1,47 +1,54 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { IVideoPlayerContext } from "../../types/IVideoPlayerContext";
 import { IVideoPlayerProps } from "../../types/IVideoPlayerProps";
 import { Controls } from "./Controls";
 import { Container, Video } from "./styles";
 
-const handleTimeUpdateAndBuffer = ({
-  video,
-  setTime,
-  setBuffer,
-}: IVideoPlayerContext) => {
-  if (video.current) {
-    setTime(video.current.currentTime);
-
-    for (let i = 0; i < video.current.buffered.length; i++) {
-      const startX = video.current.buffered.start(i);
-      const endX = video.current.buffered.end(i);
-      const width = endX - startX;
-      setBuffer(width);
-    }
-  }
-};
-
 export const VideoPlayer = (props: IVideoPlayerProps) => {
-  const { video, fullScreen, setTime, setBuffer, actions } = useVideoPlayer();
+  const { video, fullScreen, setTime, setBuffer, actions, setFullScreen } =
+    useVideoPlayer();
+
+  const handleTimeUpdateAndBuffer = useCallback(
+    (videoContext: IVideoPlayerContext) => {
+      const { video, setTime, setBuffer } = videoContext;
+      if (video.current) {
+        setTime(video.current.currentTime);
+        for (let i = 0; i < video.current.buffered.length; i++) {
+          const startX = video.current.buffered.start(i);
+          const endX = video.current.buffered.end(i);
+          const width = endX - startX;
+          setBuffer(width);
+        }
+      }
+    },
+    []
+  );
 
   useEffect(() => {
+    const fullsSreenChange = () => setFullScreen(!!document.fullscreenElement);
+
+    const handleTimeUpdate = () => {
+      handleTimeUpdateAndBuffer({
+        video,
+        setTime,
+        setBuffer,
+      } as IVideoPlayerContext);
+    };
+
     const currentVideo = video.current;
 
     if (currentVideo) {
-      const handler = () =>
-        handleTimeUpdateAndBuffer({
-          video,
-          setTime,
-          setBuffer,
-        } as IVideoPlayerContext);
+      currentVideo.addEventListener("timeupdate", handleTimeUpdate);
 
-      currentVideo.addEventListener("timeupdate", handler);
+      document.addEventListener("fullscreenchange", fullsSreenChange);
 
-      // NOTE Prevent memory leak
-      return () => currentVideo.removeEventListener("timeupdate", handler);
+      return () => {
+        currentVideo.removeEventListener("timeupdate", handleTimeUpdate);
+        document.removeEventListener("fullscreenchange", fullsSreenChange);
+      };
     }
-  }, [video, setTime, setBuffer]);
+  }, [video, setFullScreen, setTime, setBuffer, handleTimeUpdateAndBuffer]);
 
   return (
     <Container fullScreen={fullScreen}>

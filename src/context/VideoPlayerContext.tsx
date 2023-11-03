@@ -67,8 +67,9 @@ export const VideoPlayerContextProvider = ({
     if (!video.current) return;
 
     const e = document.documentElement as FullscreenElement;
+    const isFullscreen = document.fullscreenElement;
 
-    if (document.fullscreenElement !== null) {
+    if (isFullscreen) {
       await document.exitFullscreen();
       setFullScreen(!fullScreen);
     } else {
