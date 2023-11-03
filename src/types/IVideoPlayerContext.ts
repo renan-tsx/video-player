@@ -1,3 +1,5 @@
+import { IButtonSpeedProps } from "./IButtonSpeedProps";
+
 export interface IVideoPlayerContext {
   state: {
     video: React.RefObject<HTMLVideoElement>;
@@ -26,5 +28,6 @@ export interface IVideoPlayerContext {
     toggleFullScreen: () => void;
     toggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
     hadleTimeBuffer: () => void;
+    changeSpeed: (options: IButtonSpeedProps) => void;
   };
 }

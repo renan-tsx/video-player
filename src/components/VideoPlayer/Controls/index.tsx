@@ -36,7 +36,13 @@ export const Controls = () => {
         <Box>
           <ButtonVolume />
           <ButtonMute />
-          <ButtonSpeed options={[2, 1.75, 1.5, 1.25, 1, 0.75]} />
+          <ButtonSpeed
+            options={{
+              rate: 0.25,
+              min: 0.75,
+              max: 2,
+            }}
+          />
           <ButtonFullScreen />
         </Box>
       </Container>

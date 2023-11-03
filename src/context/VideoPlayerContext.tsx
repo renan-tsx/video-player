@@ -1,4 +1,5 @@
 import React from "react";
+import { IButtonSpeedProps } from "../types/IButtonSpeedProps";
 import { IVideoPlayerContext } from "../types/IVideoPlayerContext";
 
 export const VideoPlayerContext =
@@ -104,6 +105,15 @@ export const VideoPlayerContextProvider = ({
     }
   };
 
+  const changeSpeed = ({ options }: IButtonSpeedProps) => {
+    if (playbackRate === options.max) {
+      actions.changePlayBackRate(options.min);
+      return;
+    }
+
+    actions.changePlayBackRate(playbackRate + options.rate);
+  };
+
   const actions = {
     onPlayPause,
     mute,
@@ -114,6 +124,7 @@ export const VideoPlayerContextProvider = ({
     toggleFullScreen,
     toggleTimeLine,
     hadleTimeBuffer,
+    changeSpeed
   };
 
   return (
