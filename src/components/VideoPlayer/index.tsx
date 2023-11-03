@@ -5,39 +5,33 @@ import { Controls } from "./Controls";
 import { Container, Video } from "./styles";
 
 export const VideoPlayer = (props: IVideoPlayerProps) => {
-  const { video, fullScreen, setTime, setBuffer, actions, setFullScreen } =
-    useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
+  const { video, fullScreen, setFullScreen, setTime, setBuffer } = state;
+  const { hadleTimeBuffer, onPlayPause } = actions;
 
   useEffect(() => {
     const fullsSreenChange = () => setFullScreen(!!document.fullscreenElement);
-    const handleTimeUpdate = () => actions.handleTimeUpdateAndBuffer;
 
     const currentVideo = video.current;
 
     if (currentVideo) {
-      currentVideo.addEventListener("timeupdate", handleTimeUpdate);
+      currentVideo.addEventListener("timeupdate", hadleTimeBuffer);
       document.addEventListener("fullscreenchange", fullsSreenChange);
 
       // NOTE remove events on disassembly
       return () => {
-        currentVideo.removeEventListener("timeupdate", handleTimeUpdate);
+        currentVideo.removeEventListener("timeupdate", hadleTimeBuffer);
         document.removeEventListener("fullscreenchange", fullsSreenChange);
       };
     }
-  }, [
-    video,
-    setFullScreen,
-    setTime,
-    setBuffer,
-    actions.handleTimeUpdateAndBuffer,
-  ]);
+  }, [video, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
 
   return (
     <Container fullScreen={fullScreen}>
       <Video
         ref={video}
         {...props}
-        onClick={actions.onPlayPause}
+        onClick={onPlayPause}
         controlsList="nodownload"
         playsInline
         controls={false}

@@ -2,15 +2,19 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Container } from "./styles";
 
 export const TimeLine = () => {
-  const { video, time, buffer, actions } = useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
 
   return (
-    <Container time={time} max={video.current?.duration} buffer={buffer}>
+    <Container
+      time={state.time}
+      max={state.video.current?.duration}
+      buffer={state.buffer}
+    >
       <input
         type="range"
-        value={time}
+        value={state.time}
         min={0}
-        max={video.current?.duration}
+        max={state.video.current?.duration}
         onChange={actions.toggleTimeLine}
       />
     </Container>

@@ -92,7 +92,7 @@ export const VideoPlayerContextProvider = ({
     setTime(video.current.currentTime);
   };
 
-  const handleTimeUpdateAndBuffer = () => {
+  const hadleTimeBuffer = () => {
     if (video.current) {
       setTime(video.current.currentTime);
       for (let i = 0; i < video.current.buffered.length; i++) {
@@ -113,28 +113,30 @@ export const VideoPlayerContextProvider = ({
     changeVolume,
     toggleFullScreen,
     toggleTimeLine,
-    handleTimeUpdateAndBuffer,
+    hadleTimeBuffer,
   };
 
   return (
     <VideoPlayerContext.Provider
       value={{
-        video,
-        playing,
-        setPlaying,
-        muted,
-        setMuted,
-        time,
-        setTime,
-        buffer,
-        setBuffer,
-        playbackRate,
-        setPlaybackRate,
-        volume,
-        setVolume,
+        state: {
+          video,
+          playing,
+          setPlaying,
+          muted,
+          setMuted,
+          time,
+          setTime,
+          buffer,
+          setBuffer,
+          playbackRate,
+          setPlaybackRate,
+          volume,
+          setVolume,
+          fullScreen,
+          setFullScreen,
+        },
         actions,
-        fullScreen,
-        setFullScreen,
       }}
     >
       {children}

@@ -3,11 +3,11 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Button } from "./styles";
 
 export const ButtonPlayPause = () => {
-  const { playing, actions } = useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
 
   return (
     <Button onClick={actions.onPlayPause}>
-      {playing ? <FaPause /> : <FaPlay />}
+      {state.playing ? <FaPause /> : <FaPlay />}
     </Button>
   );
 };

@@ -19,7 +19,7 @@ import { TimeLine } from "../TimeLine";
 import { Box, Container } from "./styles";
 
 export const Controls = () => {
-  const { fullScreen } = useVideoPlayer();
+  const { state } = useVideoPlayer();
   // const { video, playing, setPlaying, muted, setMuted, time, setTime, buffer } =
   //   useVideoPlayer();
 
@@ -59,7 +59,7 @@ export const Controls = () => {
     <>
       <Container
         className="controls"
-        fullScreen={fullScreen}
+        fullScreen={state.fullScreen}
         style={{ display: "flex", gap: 0 }}
       >
         <TimeLine />

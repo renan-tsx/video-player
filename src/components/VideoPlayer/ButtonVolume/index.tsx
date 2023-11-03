@@ -2,7 +2,7 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Box } from "./styles";
 
 export const ButtonVolume = () => {
-  const { volume, actions } = useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
 
   return (
     <Box>
@@ -10,7 +10,7 @@ export const ButtonVolume = () => {
         type="range"
         min={0}
         max={100}
-        defaultValue={volume}
+        defaultValue={state.volume}
         onChange={actions.changeVolume}
       />
     </Box>

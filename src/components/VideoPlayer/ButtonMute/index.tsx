@@ -3,11 +3,11 @@ import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Button } from "./styles";
 
 export const ButtonMute = () => {
-  const { muted, actions } = useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
 
   return (
     <Button onClick={actions.mute}>
-      {muted ? <FaVolumeXmark /> : <FaVolumeLow />}
+      {state.muted ? <FaVolumeXmark /> : <FaVolumeLow />}
     </Button>
   );
 };
