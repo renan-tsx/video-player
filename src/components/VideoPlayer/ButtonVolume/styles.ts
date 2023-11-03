@@ -11,19 +11,28 @@ interface BoxProps {
 export const Box = styled.div<BoxProps>`
   display: flex;
   opacity: 1;
-  transform: 0.1s;
+  width: 7rem;
+  transition: width 0.1s ease-in-out 0.5s;
+
+  flex-direction: column;
+  justify-content: center;
 
   &:hover {
-    display: flex;
-    opacity: 1;
+    & > input {
+      width: 7rem !important;
+      align-self: end;
+      opacity: 1 !important;
+    }
   }
 
   input[type="range"] {
+    width: 0;
+    opacity: 0;
+
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 7rem;
     border: 0;
 
     &:focus {

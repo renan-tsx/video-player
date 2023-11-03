@@ -39,6 +39,19 @@ export const Button = styled.button`
     display: flex;
     opacity: 1;
   }
+
+  &:hover {
+    & + div {
+      display: flex;
+      opacity: 1;
+
+      input {
+        width: 7rem !important;
+        align-self: end;
+        opacity: 1 !important;
+      }
+    }
+  }
 `;
 
 export const PlayBackMenu = styled.div`
