@@ -5,13 +5,6 @@ interface IContainer {
   playing: boolean;
 }
 
-// full
-// - visible hover
-// - visible not play
-
-// not-full
-// viseble not play
-
 export const Container = styled.div<IContainer>`
   display: ${({ fullScreen, playing }) => {
     return fullScreen || !playing ? "flex" : "none";
