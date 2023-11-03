@@ -36,6 +36,7 @@ export const Button = styled.button`
   }
 
   &:hover + div {
+    display: flex;
     opacity: 1;
   }
 `;

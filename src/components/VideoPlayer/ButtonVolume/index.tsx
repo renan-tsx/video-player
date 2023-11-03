@@ -11,6 +11,7 @@ export const ButtonVolume = () => {
         min={0}
         max={100}
         defaultValue={state.volume}
+        value={state.volume}
         onChange={actions.changeVolume}
       />
     </Box>

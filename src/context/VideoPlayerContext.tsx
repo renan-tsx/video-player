@@ -2,6 +2,13 @@ import React from "react";
 import { IButtonSpeedProps } from "../types/IButtonSpeedProps";
 import { IVideoPlayerContext } from "../types/IVideoPlayerContext";
 
+interface FullscreenElement {
+  requestFullscreen?: () => Promise<void>;
+  mozRequestFullScreen?: () => void;
+  webkitRequestFullscreen?: () => void;
+  msRequestFullscreen?: () => void;
+}
+
 export const VideoPlayerContext =
   React.createContext<IVideoPlayerContext | null>(null);
 
@@ -30,8 +37,39 @@ export const VideoPlayerContextProvider = ({
 
   const mute = () => {
     if (!video.current) return;
+    let volume = video.current.volume;
+
+    if (volume === 0) {
+      volume = 0.5;
+      setVolume(50);
+    } else {
+      volume = 0;
+      setVolume(0);
+    }
+
     setMuted(!video.current.muted);
     video.current.muted = !video.current.muted;
+    video.current.volume = volume;
+  };
+
+  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!video.current) return;
+
+    let volume = Number(e.target.value);
+    let muted = video.current.muted;
+
+    if (volume === 0) {
+      volume = 0;
+      muted = true;
+      setMuted(true);
+    } else if (muted) {
+      muted = false;
+      setMuted(false);
+    }
+
+    setVolume(volume);
+    video.current.volume = volume / 100;
+    video.current.muted = muted;
   };
 
   const forward = () => {
@@ -49,20 +87,6 @@ export const VideoPlayerContextProvider = ({
     setPlaybackRate(speed);
     video.current.playbackRate = speed;
   };
-
-  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!video.current) return;
-    const volume = Number(e.target.value);
-    setVolume(volume);
-    video.current.volume = volume / 100;
-  };
-
-  interface FullscreenElement {
-    requestFullscreen?: () => Promise<void>;
-    mozRequestFullScreen?: () => void;
-    webkitRequestFullscreen?: () => void;
-    msRequestFullscreen?: () => void;
-  }
 
   const toggleFullScreen = async () => {
     if (!video.current) return;
@@ -124,7 +148,7 @@ export const VideoPlayerContextProvider = ({
     toggleFullScreen,
     toggleTimeLine,
     hadleTimeBuffer,
-    changeSpeed
+    changeSpeed,
   };
 
   return (

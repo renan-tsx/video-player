@@ -10,6 +10,13 @@ interface BoxProps {
 
 export const Box = styled.div<BoxProps>`
   display: flex;
+  opacity: 1;
+  transform: 0.1s;
+
+  &:hover {
+    display: flex;
+    opacity: 1;
+  }
 
   input[type="range"] {
     -webkit-appearance: none;

@@ -34,8 +34,10 @@ export const Controls = () => {
           <ButtonSkip skip={"forward"} />
         </Box>
         <Box>
-          <ButtonVolume />
-          <ButtonMute />
+          <div className="volume">
+            <ButtonMute />
+            <ButtonVolume />
+          </div>
           <ButtonSpeed
             options={{
               rate: 0.25,

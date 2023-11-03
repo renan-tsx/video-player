@@ -34,6 +34,11 @@ export const Container = styled.div<IContainer>`
     display: flex;
     opacity: 1;
   }
+
+  .volume {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 `;
 
 export const Box = styled.div`
