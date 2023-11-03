@@ -13,6 +13,13 @@ export const Container = styled.div<IContainer>`
   background: var(--timeline-bg);
   overflow: hidden;
 
+  &:hover input[type="range"] {
+    &::-webkit-slider-thumb {
+      opacity: 1;
+      transition: 0.1s;
+    }
+  }
+
   input[type="range"] {
     width: 100%;
 
@@ -60,6 +67,9 @@ export const Container = styled.div<IContainer>`
 
     /* slider thumb */
     &::-webkit-slider-thumb {
+      opacity: 0;
+      transition: 0.1s;
+
       -webkit-appearance: none; /* Override default look */
       appearance: none;
       margin-top: -4px; /* Centers thumb on the track */
