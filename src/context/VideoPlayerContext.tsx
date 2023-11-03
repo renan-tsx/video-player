@@ -92,6 +92,18 @@ export const VideoPlayerContextProvider = ({
     setTime(video.current.currentTime);
   };
 
+  const handleTimeUpdateAndBuffer = () => {
+    if (video.current) {
+      setTime(video.current.currentTime);
+      for (let i = 0; i < video.current.buffered.length; i++) {
+        const startX = video.current.buffered.start(i);
+        const endX = video.current.buffered.end(i);
+        const width = endX - startX;
+        setBuffer(width);
+      }
+    }
+  };
+
   const actions = {
     onPlayPause,
     mute,
@@ -101,6 +113,7 @@ export const VideoPlayerContextProvider = ({
     changeVolume,
     toggleFullScreen,
     toggleTimeLine,
+    handleTimeUpdateAndBuffer,
   };
 
   return (

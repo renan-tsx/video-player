@@ -23,5 +23,6 @@ export interface IVideoPlayerContext {
     changeVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
     toggleFullScreen: () => void;
     toggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleTimeUpdateAndBuffer: () => void;
   };
 }
