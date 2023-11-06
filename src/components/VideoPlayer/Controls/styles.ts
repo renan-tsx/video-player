@@ -43,4 +43,10 @@ export const Container = styled.div<IContainer>`
 
 export const Box = styled.div`
   display: flex;
+  color: var(--white);
+
+  span {
+    align-self: center;
+    padding: 0 0.5rem;
+  }
 `;

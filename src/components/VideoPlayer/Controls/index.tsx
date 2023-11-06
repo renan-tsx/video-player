@@ -17,7 +17,7 @@ import { TimeLine } from "../TimeLine";
 import { Box, Container } from "./styles";
 
 export const Controls = () => {
-  const { state } = useVideoPlayer();
+  const { state, actions } = useVideoPlayer();
 
   return (
     <>
@@ -32,6 +32,11 @@ export const Controls = () => {
           <ButtonPlayPause />
           <ButtonSkip skip={"backward"} />
           <ButtonSkip skip={"forward"} />
+          {state.video.current && (
+            <span>
+              {actions.timeDisplay(state.time, state.video.current.duration)}
+            </span>
+          )}
         </Box>
         <Box>
           <div className="volume">

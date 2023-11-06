@@ -29,5 +29,6 @@ export interface IVideoPlayerContext {
     toggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
     hadleTimeBuffer: () => void;
     changeSpeed: (options: IButtonSpeedProps) => void;
+    timeDisplay: (currentTime: number, duration: number) => string;
   };
 }

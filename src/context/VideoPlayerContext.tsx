@@ -138,6 +138,23 @@ export const VideoPlayerContextProvider = ({
     actions.changePlayBackRate(playbackRate + options.rate);
   };
 
+  const formatTime = (time: number): string => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+
+    const minutesString = String(minutes).padStart(2, "0");
+    const secondsString = String(seconds).padStart(2, "0");
+
+    return `${minutesString}:${secondsString}`;
+  };
+
+  const timeDisplay = (currentTime: number, duration: number): string => {
+    const formattedCurrentTime = formatTime(currentTime);
+    const formattedDuration = formatTime(duration);
+
+    return `${formattedCurrentTime} / ${formattedDuration}`;
+  };
+
   const actions = {
     onPlayPause,
     mute,
@@ -149,6 +166,7 @@ export const VideoPlayerContextProvider = ({
     toggleTimeLine,
     hadleTimeBuffer,
     changeSpeed,
+    timeDisplay,
   };
 
   return (
