@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { IVideoPlayerProps } from "../../types/IVideoPlayerProps";
 import { Controls } from "./Controls";
+import { IconPlayPause } from "./IconPlayPause";
 import { Container, Video } from "./styles";
 
 export const VideoPlayer = (props: IVideoPlayerProps) => {
@@ -36,7 +37,8 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         controlsList="nodownload"
         playsInline
         controls={false}
-      ></Video>
+      />
+      <IconPlayPause />
       <Controls />
     </Container>
   );

@@ -23,8 +23,23 @@ export const VideoPlayerContextProvider = ({
   const [playbackRate, setPlaybackRate] = React.useState(1);
   const [volume, setVolume] = React.useState(50);
   const [fullScreen, setFullScreen] = React.useState(false);
+  const iconPlayPauseRef = React.useRef<HTMLDivElement | null>(null);
+  const [timePlayPause, setTimePlayPause] = React.useState(250);
+
+  const addAndRemoveClass = (delay: number) => {
+    if (iconPlayPauseRef.current) {
+      iconPlayPauseRef.current.classList.add("active");
+    }
+
+    setTimeout(() => {
+      if (iconPlayPauseRef.current) {
+        iconPlayPauseRef.current.classList.remove("active");
+      }
+    }, delay);
+  };
 
   const onPlayPause = () => {
+    addAndRemoveClass(timePlayPause);
     if (playing) {
       video.current?.pause();
       setPlaying(!playing);
@@ -188,6 +203,9 @@ export const VideoPlayerContextProvider = ({
           setVolume,
           fullScreen,
           setFullScreen,
+          iconPlayPauseRef,
+          timePlayPause,
+          setTimePlayPause,
         },
         actions,
       }}

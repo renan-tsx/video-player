@@ -17,6 +17,9 @@ export interface IVideoPlayerContext {
     setVolume: React.Dispatch<React.SetStateAction<number>>;
     fullScreen: boolean;
     setFullScreen: React.Dispatch<React.SetStateAction<boolean>>;
+    iconPlayPauseRef: React.MutableRefObject<HTMLDivElement | null>;
+    timePlayPause: number;
+    setTimePlayPause: React.Dispatch<React.SetStateAction<number>>;
   };
   actions: {
     onPlayPause: () => void;
