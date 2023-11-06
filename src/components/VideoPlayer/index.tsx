@@ -7,7 +7,7 @@ import { Container, Video } from "./styles";
 export const VideoPlayer = (props: IVideoPlayerProps) => {
   const { state, actions } = useVideoPlayer();
   const { video, fullScreen, setFullScreen, setTime, setBuffer } = state;
-  const { hadleTimeBuffer, onPlayPause } = actions;
+  const { hadleTimeBuffer, onPlayPause, toggleFullScreen } = actions;
 
   useEffect(() => {
     const fullsSreenChange = () => setFullScreen(!!document.fullscreenElement);
@@ -32,6 +32,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         ref={video}
         {...props}
         onClick={onPlayPause}
+        onDoubleClick={toggleFullScreen}
         controlsList="nodownload"
         playsInline
         controls={false}
