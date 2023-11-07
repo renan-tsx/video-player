@@ -1,6 +1,7 @@
 import React from "react";
-import { theme } from "../components/VideoPlayer/theme";
+import { themeVideo } from "../components/VideoPlayer/theme";
 import { IButtonSpeedProps } from "../types/IButtonSpeedProps";
+import { ITheme } from "../types/ITheme";
 import { IVideoPlayerContext } from "../types/IVideoPlayerContext";
 
 interface FullscreenElement {
@@ -26,6 +27,7 @@ export const VideoPlayerContextProvider = ({
   const [fullScreen, setFullScreen] = React.useState(false);
   const iconPlayPauseRef = React.useRef<HTMLDivElement | null>(null);
   const [timePlayPause, setTimePlayPause] = React.useState(250);
+  const [theme, setTheme] = React.useState<ITheme>(themeVideo);
 
   const addAndRemoveClass = (delay: number) => {
     if (iconPlayPauseRef.current) {
@@ -207,9 +209,10 @@ export const VideoPlayerContextProvider = ({
           iconPlayPauseRef,
           timePlayPause,
           setTimePlayPause,
+          themeVideo: theme,
+          setThemeVideo: setTheme
         },
         actions,
-        theme,
       }}
     >
       {children}

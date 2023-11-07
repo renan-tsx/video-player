@@ -3,7 +3,7 @@ import { ITheme } from "../../../types/ITheme";
 
 interface IContainer {
   duration: string;
-  theme: ITheme;
+  themeVideo: ITheme;
 }
 
 const fadeIn = keyframes`
@@ -31,7 +31,7 @@ export const Container = styled.div<IContainer>`
   justify-content: center;
 
   font-size: 3rem;
-  color: ${({ theme }) => theme.controls.color};
+  color: ${({ themeVideo }) => themeVideo.controls.color};
 
   position: absolute;
   left: calc(50% - 3rem);

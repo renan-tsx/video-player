@@ -14,6 +14,7 @@ export const Container = styled.div<IContainer>`
       left: 0;
       width: 100vw;
       height: 100vh;
+      background: #000;
     `}
 `;
 

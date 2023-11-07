@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themeVideo } from "../theme";
 
 interface IContainer {
   time: number;
@@ -10,7 +11,7 @@ export const Container = styled.div<IContainer>`
   width: 100%;
   position: absolute;
   top: -36px;
-  background: var(--timeline-bg);
+  background: ${themeVideo.timeLine.bg};
   overflow: hidden;
 
   &:hover input[type="range"] {
@@ -43,7 +44,7 @@ export const Container = styled.div<IContainer>`
     &::-webkit-slider-runnable-track {
       background: linear-gradient(
         to right,
-        var(--white) 0%,
+        ${themeVideo.timeLine.bgCurrentTime} 0%,
         ${({ time, max, buffer }) => {
           if (max === undefined || max === 0) return "0%";
           const currentTime = (time / max) * 100;
@@ -51,14 +52,18 @@ export const Container = styled.div<IContainer>`
           const remainingTime = 100 - currentTime - bufferTime;
 
           return `
-            var(--white) ${currentTime}%, var(--white) ${currentTime}%,
-            var(--timeline-buffer) ${currentTime}%, var(--timeline-buffer) ${bufferTime}%,
-            var(--timeline-remaining) ${bufferTime}%, var(--timeline-remaining) ${
-            100 - remainingTime
-          }%
+            ${themeVideo.timeLine.bgCurrentTime} ${currentTime}%, ${
+            themeVideo.timeLine.bgCurrentTime
+          } ${currentTime}%,
+            ${themeVideo.timeLine.bgBuffer} ${currentTime}%, ${
+            themeVideo.timeLine.bgBuffer
+          } ${bufferTime}%,
+            ${themeVideo.timeLine.bgDuration} ${bufferTime}%, ${
+            themeVideo.timeLine.bgDuration
+          } ${100 - remainingTime}%
           `;
         }},
-        var(--timeline-remaining) 100%
+        ${themeVideo.timeLine.bgDuration} 100%
       );
 
       border-radius: 0.5rem;
@@ -75,11 +80,11 @@ export const Container = styled.div<IContainer>`
       margin-top: -4px; /* Centers thumb on the track */
 
       /*custom styles*/
-      background-color: var(--black);
+      background-color: ${themeVideo.controls.bg};
       height: 10px;
       width: 10px;
       border-radius: 50%;
-      border: 2px solid var(--white);
+      border: 2px solid ${themeVideo.timeLine.bgCurrentTime};
     }
 
     /* &:focus::-webkit-slider-thumb {
@@ -106,13 +111,13 @@ export const Container = styled.div<IContainer>`
 
           return `
             var(--white) ${currentTime}%, var(--white) ${currentTime}%,
-            var(--timeline-buffer) ${currentTime}%, var(--timeline-buffer) ${bufferTime}%,
-            var(--timeline-remaining) ${bufferTime}%, var(--timeline-remaining) ${
+            var(--timeline-bg-buffer) ${currentTime}%, var(--timeline-bg-buffer) ${bufferTime}%,
+            var(--timeline-bg-duration) ${bufferTime}%, var(--timeline-bg-duration) ${
             100 - remainingTime
           }%
           `;
         }},
-        var(--timeline-remaining) 100%
+        var(--timeline-bg-duration) 100%
       );
 
       border-radius: 0.5rem;

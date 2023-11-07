@@ -2,7 +2,7 @@ import React from "react";
 
 export interface ITheme {
   timeLine: {
-    background: string;
+    bg: string;
     bgBuffer: string;
     bgDuration: string;
     bgCurrentTime: string;

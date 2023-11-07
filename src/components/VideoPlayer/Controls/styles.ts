@@ -4,7 +4,7 @@ import { ITheme } from "../../../types/ITheme";
 interface IContainer {
   fullScreen: boolean;
   playing: boolean;
-  theme: ITheme;
+  themeVideo: ITheme;
 }
 
 export const Container = styled.div<IContainer>`
@@ -28,7 +28,7 @@ export const Container = styled.div<IContainer>`
   width: 100%;
   min-height: 50px;
 
-  background: ${({ theme }) => theme.controls.bg};
+  background: ${({ themeVideo }) => themeVideo.controls.bg};
   bottom: 0;
   left: 0;
 
@@ -43,19 +43,19 @@ export const Container = styled.div<IContainer>`
   }
 
   span {
-    color: ${({ theme }) => theme.controls.color};
+    color: ${({ themeVideo }) => themeVideo.controls.color};
   }
 
   .icoControls {
-    background: ${({ theme }) => theme.icons.bg};
-    color: ${({ theme }) => theme.controls.color};
+    background: ${({ themeVideo }) => themeVideo.icons.bg};
+    color: ${({ themeVideo }) => themeVideo.controls.color};
 
     &:hover {
-      background: ${({ theme }) => theme.icons.bgHover};
+      background: ${({ themeVideo }) => themeVideo.icons.bgHover};
     }
 
     &.active {
-      background: ${({ theme }) => theme.icons.bgHover};
+      background: ${({ themeVideo }) => themeVideo.icons.bgHover};
     }
   }
 `;

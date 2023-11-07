@@ -11,13 +11,26 @@ html {
   --font-size: 1rem;
   --radius: 0.25rem;
 
+  /* System colors */
   --white: #ffffff;
   --black: #000000;
 
-  --timeline-bg: rgba(0, 0, 0, 0.7);
-  --timeline-buffer: #7a7a7a;
-  --timeline-remaining: #3c3c3c;
+  --color: var(--blue-400);
+  --color-light: var(--blue-50);
+  --color-dark: var(--blue-700);
 
+  /* Variables for video play */
+  --timeline-bg: rgba(0, 0, 0, 0.7);
+  --timeline-bg-buffer: #7a7a7a;
+  --timeline-bg-duration: #3c3c3c;
+  --timeline-bg-current: #ffffff;
+
+  --controls-bg: #000000;
+  --controls-color: #ffffff;
+
+  --icons-bg-hover: #303030;
+
+  /* Colors */
   --blue-50: #dde5ff;
   --blue-400: #87b1ff;
   --blue-500: #5d8afe;
@@ -30,10 +43,6 @@ html {
   --gray-600: #303030;
   --gray-700: #232323;
   --gray-800: #191919;
-
-  --color: var(--blue-400);
-  --color-light: var(--blue-50);
-  --color-dark: var(--blue-700);
 }
 
 body {

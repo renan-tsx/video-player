@@ -21,6 +21,8 @@ export interface IVideoPlayerContext {
     iconPlayPauseRef: React.MutableRefObject<HTMLDivElement | null>;
     timePlayPause: number;
     setTimePlayPause: React.Dispatch<React.SetStateAction<number>>;
+    themeVideo: ITheme;
+    setThemeVideo: React.Dispatch<React.SetStateAction<ITheme>>;
   };
   actions: {
     onPlayPause: () => void;
@@ -35,5 +37,4 @@ export interface IVideoPlayerContext {
     onChangeSpeed: (options: IButtonSpeedProps) => void;
     hadleTimeDisplay: (currentTime: number, duration: number) => string;
   };
-  theme: ITheme;
 }

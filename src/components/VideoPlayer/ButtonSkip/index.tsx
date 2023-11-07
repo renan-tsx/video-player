@@ -6,14 +6,16 @@ interface ButtonSkip {
 }
 
 export const ButtonSkip = ({ skip }: ButtonSkip) => {
-  const { actions, theme } = useVideoPlayer();
+  const { actions, state } = useVideoPlayer();
 
   return (
     <Button
       className="icoControls"
       onClick={skip === "forward" ? actions.onForward : actions.onBackward}
     >
-      {skip === "forward" ? theme.icons.icoForward : theme.icons.icoBackward}
+      {skip === "forward"
+        ? state.themeVideo.icons.icoForward
+        : state.themeVideo.icons.icoBackward}
     </Button>
   );
 };

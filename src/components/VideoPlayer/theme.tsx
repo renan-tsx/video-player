@@ -10,20 +10,20 @@ import {
   FaVolumeXmark,
 } from "react-icons/fa6";
 
-export const theme: ITheme = {
+export const themeVideo: ITheme = {
   timeLine: {
-    background: "#FFF",
-    bgBuffer: "#FFF",
-    bgDuration: "#FFF",
-    bgCurrentTime: "#FFF",
+    bg: "var(--timeline-bg)",
+    bgBuffer: "var(--timeline-bg-buffer)",
+    bgDuration: "var(--timeline-bg-duration)",
+    bgCurrentTime: "var(--white)",
   },
   controls: {
-    color: "red",
-    bg: "var(--black)",
+    color: "var(--controls-color)",
+    bg: "var(--controls-bg)",
   },
   icons: {
-    bg: "var(--black)",
-    bgHover: "var(--gray-600)",
+    bg: "var(--controls-bg)",
+    bgHover: "var(--icons-bg-hover)",
     icoPlay: <FaPlay />,
     icoPause: <FaPause />,
     icoForward: <FaArrowRotateRight />,
