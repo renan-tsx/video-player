@@ -1,20 +1,18 @@
 import styled from "styled-components";
-import { ITheme } from "../../../types/ITheme";
 
 interface IContainer {
   fullScreen: boolean;
-  playing: boolean;
-  themeVideo: ITheme;
+  playing: "true" | "false";
 }
 
 export const Container = styled.div<IContainer>`
   display: ${({ fullScreen, playing }) => {
-    return fullScreen || !playing ? "flex" : "none";
+    return fullScreen || playing === "true" ? "none" : "flex";
   }};
 
   opacity: ${({ fullScreen, playing }) => {
     if (fullScreen && playing) return 0;
-    return fullScreen || !playing ? 1 : 0;
+    return fullScreen || playing === "true" ? 0 : 1;
   }};
 
   position: ${({ fullScreen }) => {
@@ -28,7 +26,7 @@ export const Container = styled.div<IContainer>`
   width: 100%;
   min-height: 50px;
 
-  background: ${({ themeVideo }) => themeVideo.controls.bg};
+  background: ${({ theme }) => theme.controls.bg};
   bottom: 0;
   left: 0;
 
@@ -43,19 +41,19 @@ export const Container = styled.div<IContainer>`
   }
 
   span {
-    color: ${({ themeVideo }) => themeVideo.controls.color};
+    color: ${({ theme }) => theme.controls.color};
   }
 
   .icoControls {
-    background: ${({ themeVideo }) => themeVideo.icons.bg};
-    color: ${({ themeVideo }) => themeVideo.controls.color};
+    background: ${({ theme }) => theme.icons.bg};
+    color: ${({ theme }) => theme.controls.color};
 
     &:hover {
-      background: ${({ themeVideo }) => themeVideo.icons.bgHover};
+      background: ${({ theme }) => theme.icons.bgHover};
     }
 
     &.active {
-      background: ${({ themeVideo }) => themeVideo.icons.bgHover};
+      background: ${({ theme }) => theme.icons.bgHover};
     }
   }
 `;

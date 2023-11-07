@@ -20,43 +20,40 @@ export const Controls = () => {
   const { state, actions } = useVideoPlayer();
 
   return (
-    <>
-      <Container
-        className="controls"
-        fullScreen={state.fullScreen}
-        playing={state.playing}
-        style={{ display: "flex", gap: 0 }}
-        themeVideo={state.themeVideo}
-      >
-        <TimeLine />
-        <Box>
-          <ButtonPlayPause />
-          <ButtonSkip skip={"backward"} />
-          <ButtonSkip skip={"forward"} />
-          {state.videoRef.current && (
-            <span>
-              {actions.hadleTimeDisplay(
-                state.time,
-                state.videoRef.current.duration
-              )}
-            </span>
-          )}
-        </Box>
-        <Box>
-          <div className="volume">
-            <ButtonMute />
-            <ButtonVolume />
-          </div>
-          <ButtonSpeed
-            options={{
-              rate: 0.25,
-              min: 0.75,
-              max: 2,
-            }}
-          />
-          <ButtonFullScreen />
-        </Box>
-      </Container>
-    </>
+    <Container
+      className="controls"
+      fullScreen={state.fullScreen}
+      playing={state.playing ? "true" : "false"}
+      style={{ display: "flex", gap: 0 }}
+    >
+      <TimeLine />
+      <Box>
+        <ButtonPlayPause />
+        <ButtonSkip skip={"backward"} />
+        <ButtonSkip skip={"forward"} />
+        {state.videoRef.current && (
+          <span>
+            {actions.hadleTimeDisplay(
+              state.time,
+              state.videoRef.current.duration
+            )}
+          </span>
+        )}
+      </Box>
+      <Box>
+        <div className="volume">
+          <ButtonMute />
+          <ButtonVolume />
+        </div>
+        <ButtonSpeed
+          options={{
+            rate: 0.25,
+            min: 0.75,
+            max: 2,
+          }}
+        />
+        <ButtonFullScreen />
+      </Box>
+    </Container>
   );
 };

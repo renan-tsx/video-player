@@ -1,9 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import { ITheme } from "../../../types/ITheme";
-
 interface IContainer {
   duration: string;
-  themeVideo: ITheme;
 }
 
 const fadeIn = keyframes`
@@ -31,7 +28,7 @@ export const Container = styled.div<IContainer>`
   justify-content: center;
 
   font-size: 3rem;
-  color: ${({ themeVideo }) => themeVideo.controls.color};
+  color: ${({ theme }) => theme.controls.color};
 
   position: absolute;
   left: calc(50% - 3rem);

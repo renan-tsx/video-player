@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ThemeProvider } from "styled-components";
 import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import { IVideoPlayerProps } from "../../types/IVideoPlayerProps";
 import { Controls } from "./Controls";
@@ -28,18 +29,20 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
   }, [videoRef, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
 
   return (
-    <Container fullScreen={fullScreen}>
-      <Video
-        ref={videoRef}
-        {...props}
-        onClick={onPlayPause}
-        onDoubleClick={onToggleFullScreen}
-        controlsList="nodownload"
-        playsInline
-        controls={false}
-      />
-      <IconPlayPause />
-      <Controls />
-    </Container>
+    <ThemeProvider theme={state.themeVideo}>
+      <Container fullScreen={fullScreen}>
+        <Video
+          ref={videoRef}
+          {...props}
+          onClick={onPlayPause}
+          onDoubleClick={onToggleFullScreen}
+          controlsList="nodownload"
+          playsInline
+          controls={false}
+        />
+        <IconPlayPause />
+        <Controls />
+      </Container>
+    </ThemeProvider>
   );
 };

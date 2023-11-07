@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { themeVideo } from "../theme";
-
 interface IContainer {
   time: number;
   max: number | undefined;
@@ -11,7 +9,7 @@ export const Container = styled.div<IContainer>`
   width: 100%;
   position: absolute;
   top: -36px;
-  background: ${themeVideo.timeLine.bg};
+  background: ${({ theme }) => theme.timeLine.bg};
   overflow: hidden;
 
   &:hover input[type="range"] {
@@ -44,26 +42,23 @@ export const Container = styled.div<IContainer>`
     &::-webkit-slider-runnable-track {
       background: linear-gradient(
         to right,
-        ${themeVideo.timeLine.bgCurrentTime} 0%,
-        ${({ time, max, buffer }) => {
+        ${({ theme }) => theme.timeLine.bgCurrentTime} 0%,
+        ${({ time, max, buffer, theme }) => {
           if (max === undefined || max === 0) return "0%";
           const currentTime = (time / max) * 100;
           const bufferTime = (buffer / max) * 100;
           const remainingTime = 100 - currentTime - bufferTime;
 
           return `
-            ${themeVideo.timeLine.bgCurrentTime} ${currentTime}%, ${
-            themeVideo.timeLine.bgCurrentTime
-          } ${currentTime}%,
-            ${themeVideo.timeLine.bgBuffer} ${currentTime}%, ${
-            themeVideo.timeLine.bgBuffer
-          } ${bufferTime}%,
-            ${themeVideo.timeLine.bgDuration} ${bufferTime}%, ${
-            themeVideo.timeLine.bgDuration
-          } ${100 - remainingTime}%
-          `;
+        ${theme.timeLine.bgCurrentTime} ${currentTime}%, 
+        ${theme.timeLine.bgCurrentTime} ${currentTime}%,
+        ${theme.timeLine.bgBuffer} ${currentTime}%, 
+        ${theme.timeLine.bgBuffer} ${bufferTime}%,
+        ${theme.timeLine.bgDuration} ${bufferTime}%, 
+        ${theme.timeLine.bgDuration} ${100 - remainingTime}%
+      `;
         }},
-        ${themeVideo.timeLine.bgDuration} 100%
+        ${({ theme }) => theme.timeLine.bgDuration} 100%
       );
 
       border-radius: 0.5rem;
@@ -80,11 +75,11 @@ export const Container = styled.div<IContainer>`
       margin-top: -4px; /* Centers thumb on the track */
 
       /*custom styles*/
-      background-color: ${themeVideo.controls.bg};
+      background-color: ${({ theme }) => theme.controls.bg};
       height: 10px;
       width: 10px;
       border-radius: 50%;
-      border: 2px solid ${themeVideo.timeLine.bgCurrentTime};
+      border: 2px solid ${({ theme }) => theme.timeLine.bgCurrentTime};
     }
 
     /* &:focus::-webkit-slider-thumb {
