@@ -2,7 +2,7 @@ import { IButtonSpeedProps } from "./IButtonSpeedProps";
 
 export interface IVideoPlayerContext {
   state: {
-    video: React.RefObject<HTMLVideoElement>;
+    videoRef: React.RefObject<HTMLVideoElement>;
     playing: boolean;
     setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
     muted: boolean;
@@ -23,15 +23,15 @@ export interface IVideoPlayerContext {
   };
   actions: {
     onPlayPause: () => void;
-    mute: () => void;
-    forward: () => void;
-    backward: () => void;
-    changePlayBackRate: (speed: number) => void;
-    changeVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    toggleFullScreen: () => void;
-    toggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onMute: () => void;
+    onForward: () => void;
+    onBackward: () => void;
+    onChangePlayBackRate: (speed: number) => void;
+    onChangeVolume: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onToggleFullScreen: () => void;
+    onToggleTimeLine: (e: React.ChangeEvent<HTMLInputElement>) => void;
     hadleTimeBuffer: () => void;
-    changeSpeed: (options: IButtonSpeedProps) => void;
-    timeDisplay: (currentTime: number, duration: number) => string;
+    onChangeSpeed: (options: IButtonSpeedProps) => void;
+    hadleTimeDisplay: (currentTime: number, duration: number) => string;
   };
 }

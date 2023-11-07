@@ -10,7 +10,9 @@ export const ButtonSkip = ({ skip }: ButtonSkip) => {
   const { actions } = useVideoPlayer();
 
   return (
-    <Button onClick={skip === "forward" ? actions.forward : actions.backward}>
+    <Button
+      onClick={skip === "forward" ? actions.onForward : actions.onBackward}
+    >
       {skip === "forward" ? <FaArrowRotateRight /> : <FaArrowRotateLeft />}
     </Button>
   );

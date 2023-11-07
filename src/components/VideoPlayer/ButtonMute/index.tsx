@@ -6,7 +6,7 @@ export const ButtonMute = () => {
   const { state, actions } = useVideoPlayer();
 
   return (
-    <Button onClick={actions.mute}>
+    <Button onClick={actions.onMute}>
       {state.muted ? <FaVolumeXmark /> : <FaVolumeLow />}
     </Button>
   );

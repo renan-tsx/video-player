@@ -7,15 +7,15 @@ export const TimeLine = () => {
   return (
     <Container
       time={state.time}
-      max={state.video.current?.duration}
+      max={state.videoRef.current?.duration}
       buffer={state.buffer}
     >
       <input
         type="range"
         value={state.time}
         min={0}
-        max={state.video.current?.duration}
-        onChange={actions.toggleTimeLine}
+        max={state.videoRef.current?.duration}
+        onChange={actions.onToggleTimeLine}
       />
     </Container>
   );

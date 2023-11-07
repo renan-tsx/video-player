@@ -15,7 +15,7 @@ export const VideoPlayerContext =
 export const VideoPlayerContextProvider = ({
   children,
 }: React.PropsWithChildren) => {
-  const video = React.useRef<HTMLVideoElement>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = React.useState(false);
   const [muted, setMuted] = React.useState(false);
   const [time, setTime] = React.useState(0);
@@ -41,18 +41,18 @@ export const VideoPlayerContextProvider = ({
   const onPlayPause = () => {
     addAndRemoveClass(timePlayPause);
     if (playing) {
-      video.current?.pause();
+      videoRef.current?.pause();
       setPlaying(!playing);
       return;
     }
 
-    video.current?.play();
+    videoRef.current?.play();
     setPlaying(!playing);
   };
 
-  const mute = () => {
-    if (!video.current) return;
-    let volume = video.current.volume;
+  const onMute = () => {
+    if (!videoRef.current) return;
+    let volume = videoRef.current.volume;
 
     if (volume === 0) {
       volume = 0.5;
@@ -62,16 +62,16 @@ export const VideoPlayerContextProvider = ({
       setVolume(0);
     }
 
-    setMuted(!video.current.muted);
-    video.current.muted = !video.current.muted;
-    video.current.volume = volume;
+    setMuted(!videoRef.current.muted);
+    videoRef.current.muted = !videoRef.current.muted;
+    videoRef.current.volume = volume;
   };
 
-  const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!video.current) return;
+  const onChangeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!videoRef.current) return;
 
     let volume = Number(e.target.value);
-    let muted = video.current.muted;
+    let muted = videoRef.current.muted;
 
     if (volume === 0) {
       volume = 0;
@@ -83,28 +83,28 @@ export const VideoPlayerContextProvider = ({
     }
 
     setVolume(volume);
-    video.current.volume = volume / 100;
-    video.current.muted = muted;
+    videoRef.current.volume = volume / 100;
+    videoRef.current.muted = muted;
   };
 
-  const forward = () => {
-    if (!video.current) return;
-    video.current.currentTime += 5;
+  const onForward = () => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime += 5;
   };
 
-  const backward = () => {
-    if (!video.current) return;
-    video.current.currentTime -= 5;
+  const onBackward = () => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime -= 5;
   };
 
-  const changePlayBackRate = (speed: number) => {
-    if (!video.current) return;
+  const onChangePlayBackRate = (speed: number) => {
+    if (!videoRef.current) return;
     setPlaybackRate(speed);
-    video.current.playbackRate = speed;
+    videoRef.current.playbackRate = speed;
   };
 
-  const toggleFullScreen = async () => {
-    if (!video.current) return;
+  const onToggleFullScreen = async () => {
+    if (!videoRef.current) return;
 
     const e = document.documentElement as FullscreenElement;
     const isFullscreen = document.fullscreenElement;
@@ -126,31 +126,31 @@ export const VideoPlayerContextProvider = ({
     }
   };
 
-  const toggleTimeLine = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!video.current) return;
-    video.current.currentTime = +e.target.value;
-    setTime(video.current.currentTime);
+  const onToggleTimeLine = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!videoRef.current) return;
+    videoRef.current.currentTime = +e.target.value;
+    setTime(videoRef.current.currentTime);
   };
 
   const hadleTimeBuffer = () => {
-    if (video.current) {
-      setTime(video.current.currentTime);
-      for (let i = 0; i < video.current.buffered.length; i++) {
-        const startX = video.current.buffered.start(i);
-        const endX = video.current.buffered.end(i);
+    if (videoRef.current) {
+      setTime(videoRef.current.currentTime);
+      for (let i = 0; i < videoRef.current.buffered.length; i++) {
+        const startX = videoRef.current.buffered.start(i);
+        const endX = videoRef.current.buffered.end(i);
         const width = endX - startX;
         setBuffer(width);
       }
     }
   };
 
-  const changeSpeed = ({ options }: IButtonSpeedProps) => {
+  const onChangeSpeed = ({ options }: IButtonSpeedProps) => {
     if (playbackRate === options.max) {
-      actions.changePlayBackRate(options.min);
+      actions.onChangePlayBackRate(options.min);
       return;
     }
 
-    actions.changePlayBackRate(playbackRate + options.rate);
+    actions.onChangePlayBackRate(playbackRate + options.rate);
   };
 
   const formatTime = (time: number): string => {
@@ -163,7 +163,7 @@ export const VideoPlayerContextProvider = ({
     return `${minutesString}:${secondsString}`;
   };
 
-  const timeDisplay = (currentTime: number, duration: number): string => {
+  const hadleTimeDisplay = (currentTime: number, duration: number): string => {
     const formattedCurrentTime = formatTime(currentTime);
     const formattedDuration = formatTime(duration);
 
@@ -171,24 +171,24 @@ export const VideoPlayerContextProvider = ({
   };
 
   const actions = {
+    onMute,
+    onForward,
+    onBackward,
     onPlayPause,
-    mute,
-    forward,
-    backward,
-    changePlayBackRate,
-    changeVolume,
-    toggleFullScreen,
-    toggleTimeLine,
+    onChangeVolume,
+    onToggleTimeLine,
+    onToggleFullScreen,
+    onChangePlayBackRate,
+    onChangeSpeed,
     hadleTimeBuffer,
-    changeSpeed,
-    timeDisplay,
+    hadleTimeDisplay,
   };
 
   return (
     <VideoPlayerContext.Provider
       value={{
         state: {
-          video,
+          videoRef,
           playing,
           setPlaying,
           muted,

@@ -7,13 +7,13 @@ import { Container, Video } from "./styles";
 
 export const VideoPlayer = (props: IVideoPlayerProps) => {
   const { state, actions } = useVideoPlayer();
-  const { video, fullScreen, setFullScreen, setTime, setBuffer } = state;
-  const { hadleTimeBuffer, onPlayPause, toggleFullScreen } = actions;
+  const { videoRef, fullScreen, setFullScreen, setTime, setBuffer } = state;
+  const { hadleTimeBuffer, onPlayPause, onToggleFullScreen } = actions;
 
   useEffect(() => {
     const fullsSreenChange = () => setFullScreen(!!document.fullscreenElement);
 
-    const currentVideo = video.current;
+    const currentVideo = videoRef.current;
 
     if (currentVideo) {
       currentVideo.addEventListener("timeupdate", hadleTimeBuffer);
@@ -25,15 +25,15 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         document.removeEventListener("fullscreenchange", fullsSreenChange);
       };
     }
-  }, [video, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
+  }, [videoRef, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
 
   return (
     <Container fullScreen={fullScreen}>
       <Video
-        ref={video}
+        ref={videoRef}
         {...props}
         onClick={onPlayPause}
-        onDoubleClick={toggleFullScreen}
+        onDoubleClick={onToggleFullScreen}
         controlsList="nodownload"
         playsInline
         controls={false}

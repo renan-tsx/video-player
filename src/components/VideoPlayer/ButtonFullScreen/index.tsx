@@ -6,7 +6,7 @@ export const ButtonFullScreen = () => {
   const { actions } = useVideoPlayer();
 
   return (
-    <Button onClick={actions.toggleFullScreen}>
+    <Button onClick={actions.onToggleFullScreen}>
       <FaExpand />
     </Button>
   );

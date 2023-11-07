@@ -13,7 +13,7 @@ export const ButtonSpeed = ({ options }: IButtonSpeedProps) => {
 
   return (
     <Container>
-      <Button onClick={() => actions.changeSpeed({ options })}>
+      <Button onClick={() => actions.onChangeSpeed({ options })}>
         {state.playbackRate}x
       </Button>
 
@@ -22,7 +22,7 @@ export const ButtonSpeed = ({ options }: IButtonSpeedProps) => {
           return (
             <Button
               key={option}
-              onClick={() => actions.changePlayBackRate(option)}
+              onClick={() => actions.onChangePlayBackRate(option)}
               active={state.playbackRate === option}
             >
               {option}x
