@@ -5,7 +5,6 @@ interface IContainer {
 }
 
 export const Container = styled.div<IContainer>`
-  background: var(--black);
   width: 100%;
 
   ${({ fullScreen }) =>

@@ -1,4 +1,3 @@
-import { FaArrowRotateLeft, FaArrowRotateRight } from "react-icons/fa6";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { Button } from "./styles";
 
@@ -7,13 +6,14 @@ interface ButtonSkip {
 }
 
 export const ButtonSkip = ({ skip }: ButtonSkip) => {
-  const { actions } = useVideoPlayer();
+  const { actions, theme } = useVideoPlayer();
 
   return (
     <Button
+      className="icoControls"
       onClick={skip === "forward" ? actions.onForward : actions.onBackward}
     >
-      {skip === "forward" ? <FaArrowRotateRight /> : <FaArrowRotateLeft />}
+      {skip === "forward" ? theme.icons.icoForward : theme.icons.icoBackward}
     </Button>
   );
 };

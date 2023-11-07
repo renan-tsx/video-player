@@ -11,8 +11,6 @@ export const Button = styled.button`
   border: 0;
   cursor: pointer;
   overflow: hidden;
-  background: var(--black);
-  color: var(--white);
   font-size: 1rem;
   text-align: center;
   padding: 0 0.625rem;
@@ -26,12 +24,10 @@ export const Button = styled.button`
 
   &:hover,
   &:focus {
-    background: var(--gray-600);
     box-shadow: none;
   }
 
   &:active {
-    background: var(--black);
     box-shadow: none;
   }
 

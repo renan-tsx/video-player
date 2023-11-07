@@ -9,12 +9,13 @@ const convertToSeconds = (milliseconds: number) => {
 };
 
 export const IconPlayPause = () => {
-  const { state } = useVideoPlayer();
+  const { state, theme } = useVideoPlayer();
 
   return (
     <Container
       ref={state.iconPlayPauseRef}
       duration={convertToSeconds(state.timePlayPause)}
+      theme={theme}
     >
       {state.playing ? <FaCirclePlay /> : <FaCirclePause />}
     </Container>

@@ -1,4 +1,5 @@
 import { IButtonSpeedProps } from "./IButtonSpeedProps";
+import { ITheme } from "./ITheme";
 
 export interface IVideoPlayerContext {
   state: {
@@ -34,4 +35,5 @@ export interface IVideoPlayerContext {
     onChangeSpeed: (options: IButtonSpeedProps) => void;
     hadleTimeDisplay: (currentTime: number, duration: number) => string;
   };
+  theme: ITheme;
 }

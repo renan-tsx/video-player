@@ -13,7 +13,10 @@ export const ButtonSpeed = ({ options }: IButtonSpeedProps) => {
 
   return (
     <Container>
-      <Button onClick={() => actions.onChangeSpeed({ options })}>
+      <Button
+        className="icoControls"
+        onClick={() => actions.onChangeSpeed({ options })}
+      >
         {state.playbackRate}x
       </Button>
 
@@ -21,9 +24,11 @@ export const ButtonSpeed = ({ options }: IButtonSpeedProps) => {
         {playBackOption.map((option) => {
           return (
             <Button
+              className={`icoControls ${
+                state.playbackRate === option ? "active" : "inactive"
+              }`}
               key={option}
               onClick={() => actions.onChangePlayBackRate(option)}
-              active={state.playbackRate === option}
             >
               {option}x
             </Button>

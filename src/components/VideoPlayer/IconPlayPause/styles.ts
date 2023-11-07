@@ -1,7 +1,9 @@
 import styled, { keyframes } from "styled-components";
+import { ITheme } from "../../../types/ITheme";
 
 interface IContainer {
   duration: string;
+  theme: ITheme;
 }
 
 const fadeIn = keyframes`
@@ -29,7 +31,7 @@ export const Container = styled.div<IContainer>`
   justify-content: center;
 
   font-size: 3rem;
-  color: var(--white);
+  color: ${({ theme }) => theme.controls.color};
 
   position: absolute;
   left: calc(50% - 3rem);

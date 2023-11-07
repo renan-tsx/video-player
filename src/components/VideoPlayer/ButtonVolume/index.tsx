@@ -5,7 +5,7 @@ export const ButtonVolume = () => {
   const { state, actions } = useVideoPlayer();
 
   return (
-    <Box>
+    <Box className="icoControls">
       <input
         type="range"
         min={0}

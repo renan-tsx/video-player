@@ -12,10 +12,14 @@ export const Box = styled.div<BoxProps>`
   display: flex;
   opacity: 1;
   width: 7rem;
+  height: 2rem;
   transition: width 0.1s ease-in-out 0.5s;
 
   flex-direction: column;
   justify-content: center;
+  align-self: center;
+
+  border-radius: 30px;
 
   &:hover {
     & > input {

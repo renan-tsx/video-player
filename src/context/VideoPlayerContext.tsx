@@ -1,4 +1,5 @@
 import React from "react";
+import { theme } from "../components/VideoPlayer/theme";
 import { IButtonSpeedProps } from "../types/IButtonSpeedProps";
 import { IVideoPlayerContext } from "../types/IVideoPlayerContext";
 
@@ -208,6 +209,7 @@ export const VideoPlayerContextProvider = ({
           setTimePlayPause,
         },
         actions,
+        theme,
       }}
     >
       {children}

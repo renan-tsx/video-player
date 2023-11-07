@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { ITheme } from "../../../types/ITheme";
 
 interface IContainer {
   fullScreen: boolean;
   playing: boolean;
+  theme: ITheme;
 }
 
 export const Container = styled.div<IContainer>`
@@ -26,7 +28,7 @@ export const Container = styled.div<IContainer>`
   width: 100%;
   min-height: 50px;
 
-  background: var(--black);
+  background: ${({ theme }) => theme.controls.bg};
   bottom: 0;
   left: 0;
 
@@ -38,6 +40,23 @@ export const Container = styled.div<IContainer>`
   .volume {
     display: flex;
     flex-direction: row-reverse;
+  }
+
+  span {
+    color: ${({ theme }) => theme.controls.color};
+  }
+
+  .icoControls {
+    background: ${({ theme }) => theme.icons.bg};
+    color: ${({ theme }) => theme.controls.color};
+
+    &:hover {
+      background: ${({ theme }) => theme.icons.bgHover};
+    }
+
+    &.active {
+      background: ${({ theme }) => theme.icons.bgHover};
+    }
   }
 `;
 
