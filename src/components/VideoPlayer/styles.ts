@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 
 interface IContainer {
-  fullScreen?: boolean;
+  fullscreen: boolean | undefined;
 }
 
 export const Container = styled.div<IContainer>`
   width: 100%;
 
-  ${({ fullScreen }) =>
-    fullScreen &&
+  ${({ fullscreen }) =>
+    fullscreen &&
     css`
       position: fixed;
       left: 0;
@@ -18,7 +18,7 @@ export const Container = styled.div<IContainer>`
     `}
 `;
 
-export const Video = styled.video<IContainer>`
+export const Video = styled.video`
   margin: 0 auto;
   height: 100%;
 

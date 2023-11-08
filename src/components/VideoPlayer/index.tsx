@@ -30,7 +30,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
 
   return (
     <ThemeProvider theme={state.themeVideo}>
-      <Container fullScreen={fullScreen}>
+      <Container fullscreen={fullScreen ? true : undefined}>
         <Video
           ref={videoRef}
           {...props}

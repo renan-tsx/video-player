@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 interface IContainer {
-  fullScreen: boolean;
+  fullscreen: boolean | undefined;
   playing: "true" | "false";
 }
 
 export const Container = styled.div<IContainer>`
-  display: ${({ fullScreen, playing }) => {
-    return fullScreen || playing === "true" ? "none" : "flex";
+  display: ${({ fullscreen, playing }) => {
+    return fullscreen || playing === "true" ? "none" : "flex";
   }};
 
-  opacity: ${({ fullScreen, playing }) => {
-    if (fullScreen && playing) return 0;
-    return fullScreen || playing === "true" ? 0 : 1;
+  opacity: ${({ fullscreen, playing }) => {
+    if (fullscreen && playing) return 0;
+    return fullscreen || playing === "true" ? 0 : 1;
   }};
 
-  position: ${({ fullScreen }) => {
-    return fullScreen ? "fixed" : "absolute";
+  position: ${({ fullscreen }) => {
+    return fullscreen ? "fixed" : "absolute";
   }};
 
   transition: 0.3s;

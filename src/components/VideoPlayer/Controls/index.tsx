@@ -22,7 +22,7 @@ export const Controls = () => {
   return (
     <Container
       className="controls"
-      fullScreen={state.fullScreen}
+      fullscreen={state.fullScreen ? true : undefined}
       playing={state.playing ? "true" : "false"}
       style={{ display: "flex", gap: 0 }}
     >
