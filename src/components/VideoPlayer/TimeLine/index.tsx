@@ -6,9 +6,9 @@ export const TimeLine = () => {
 
   return (
     <Container
-      time={state.time}
+      $time={state.time}
       max={state.videoRef.current?.duration}
-      buffer={state.buffer}
+      $buffer={state.buffer}
     >
       <input
         type="range"

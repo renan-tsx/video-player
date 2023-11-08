@@ -1,14 +1,15 @@
 import styled, { css } from "styled-components";
 
 interface IContainer {
-  fullscreen: boolean | undefined;
+  $fullscreen: boolean | undefined;
 }
 
 export const Container = styled.div<IContainer>`
   width: 100%;
 
-  ${({ fullscreen }) =>
-    fullscreen &&
+  ${({ $fullscreen }) =>
+    $fullscreen !== undefined &&
+    $fullscreen.toString() === "true" &&
     css`
       position: fixed;
       left: 0;

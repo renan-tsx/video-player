@@ -1,8 +1,8 @@
 import styled from "styled-components";
 interface IContainer {
-  time: number;
+  $time: number;
   max: number | undefined;
-  buffer: number;
+  $buffer: number;
 }
 
 export const Container = styled.div<IContainer>`
@@ -43,10 +43,10 @@ export const Container = styled.div<IContainer>`
       background: linear-gradient(
         to right,
         ${({ theme }) => theme.timeLine.bgCurrentTime} 0%,
-        ${({ time, max, buffer, theme }) => {
+        ${({ $time, max, $buffer, theme }) => {
           if (max === undefined || max === 0) return "0%";
-          const currentTime = (time / max) * 100;
-          const bufferTime = (buffer / max) * 100;
+          const currentTime = ($time / max) * 100;
+          const bufferTime = ($buffer / max) * 100;
           const remainingTime = 100 - currentTime - bufferTime;
 
           return `
@@ -98,10 +98,10 @@ export const Container = styled.div<IContainer>`
       background: linear-gradient(
         to right,
         var(--white) 0%,
-        ${({ time, max, buffer }) => {
+        ${({ $time, max, $buffer }) => {
           if (max === undefined || max === 0) return "0%";
-          const currentTime = (time / max) * 100;
-          const bufferTime = (buffer / max) * 100;
+          const currentTime = ($time / max) * 100;
+          const bufferTime = ($buffer / max) * 100;
           const remainingTime = 100 - currentTime - bufferTime;
 
           return `

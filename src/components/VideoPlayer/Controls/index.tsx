@@ -22,8 +22,8 @@ export const Controls = () => {
   return (
     <Container
       className="controls"
-      fullscreen={state.fullScreen ? true : undefined}
-      playing={state.playing ? "true" : "false"}
+      $fullscreen={state.fullScreen ? true : undefined}
+      $playing={state.playing ? "true" : "false"}
       style={{ display: "flex", gap: 0 }}
     >
       <TimeLine />

@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface BoxProps {
   children: {
     props: {
-      defaultValue: number;
+      value: number;
     };
   };
 }
@@ -55,12 +55,12 @@ export const Box = styled.div<BoxProps>`
         var(--white) 0%,
         var(--white)
           ${({ children }) => {
-            const percentage = children.props.defaultValue;
+            const percentage = children.props.value;
             return `${percentage}%`;
           }},
         var(--gray-500)
           ${({ children }) => {
-            const percentage = children.props.defaultValue;
+            const percentage = children.props.value;
             return `${percentage}%`;
           }},
         var(--gray-500) 100%
@@ -100,12 +100,12 @@ export const Box = styled.div<BoxProps>`
         var(--white) 0%,
         var(--white)
           ${({ children }) => {
-            const percentage = children.props.defaultValue;
+            const percentage = children.props.value;
             return `${percentage}%`;
           }},
         var(--gray-500)
           ${({ children }) => {
-            const percentage = children.props.defaultValue;
+            const percentage = children.props.value;
             return `${percentage}%`;
           }},
         var(--gray-500) 100%

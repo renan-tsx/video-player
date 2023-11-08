@@ -14,7 +14,7 @@ export const IconPlayPause = () => {
   return (
     <Container
       ref={state.iconPlayPauseRef}
-      duration={convertToSeconds(state.timePlayPause)}
+      $duration={convertToSeconds(state.timePlayPause)}
     >
       {state.playing ? <FaCirclePlay /> : <FaCirclePause />}
     </Container>

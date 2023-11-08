@@ -7,7 +7,7 @@ interface ContainerProps extends React.ComponentProps<"div"> {
 
 export const Container = ({ bg, children, ...props }: ContainerProps) => {
   return (
-    <Content bg={bg} {...props}>
+    <Content $bg={bg} {...props}>
       {children}
     </Content>
   );

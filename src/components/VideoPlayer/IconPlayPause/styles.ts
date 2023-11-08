@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 interface IContainer {
-  duration: string;
+  $duration: string;
 }
 
 const fadeIn = keyframes`
@@ -38,6 +38,6 @@ export const Container = styled.div<IContainer>`
   opacity: 1;
 
   &.active {
-    animation: ${fadeIn} ${({ duration }) => duration} ease-in-out forwards;
+    animation: ${fadeIn} ${({ $duration }) => $duration} ease-in-out forwards;
   }
 `;
