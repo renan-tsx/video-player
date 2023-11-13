@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
-interface IButton {
-  active?: boolean | undefined;
-}
-
 export const Container = styled.div`
   position: relative;
 `;
 
-export const Button = styled.button<IButton>`
+export const Button = styled.button`
   width: 50px;
   height: 50px;
 
@@ -55,3 +51,5 @@ export const PlayBackMenu = styled.div`
     padding: 2px;
   }
 `;
+
+

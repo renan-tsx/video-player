@@ -1,4 +1,4 @@
-import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
+import { useVideoPlayer } from "../../../../hooks/useVideoPlayer";
 import { Box } from "./styles";
 
 export const ButtonVolume = () => {

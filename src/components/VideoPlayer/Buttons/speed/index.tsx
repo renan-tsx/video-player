@@ -1,6 +1,6 @@
-import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
-import { IButtonSpeedProps } from "../../../types/IButtonSpeedProps";
-import { Button, Container, PlayBackMenu } from "./styles";
+import { useVideoPlayer } from "../../../../hooks/useVideoPlayer";
+import { IButtonSpeedProps } from "../../../../types/IButtonSpeedProps";
+import { Button, Container, PlayBackMenu } from "../styles";
 
 export const ButtonSpeed = ({ options }: IButtonSpeedProps) => {
   const { state, actions } = useVideoPlayer();

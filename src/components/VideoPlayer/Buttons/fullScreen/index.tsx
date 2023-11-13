@@ -1,5 +1,5 @@
-import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
-import { Button } from "./styles";
+import { useVideoPlayer } from "../../../../hooks/useVideoPlayer";
+import { Button } from "../styles";
 
 export const ButtonFullScreen = () => {
   const { actions, state } = useVideoPlayer();

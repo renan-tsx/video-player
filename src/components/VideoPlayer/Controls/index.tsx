@@ -7,12 +7,12 @@
 // } from "react-icons/fa6";
 // import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
-import { ButtonFullScreen } from "../ButtonFullScreen";
-import { ButtonMute } from "../ButtonMute";
-import { ButtonPlayPause } from "../ButtonPlayPause";
-import { ButtonSkip } from "../ButtonSkip";
-import { ButtonSpeed } from "../ButtonSpeed";
-import { ButtonVolume } from "../ButtonVolume";
+import { ButtonFullScreen } from "../Buttons/fullScreen";
+import { ButtonMute } from "../Buttons/mute";
+import { ButtonPlayPause } from "../Buttons/playPause";
+import { ButtonSkip } from "../Buttons/skip";
+import { ButtonSpeed } from "../Buttons/speed";
+import { ButtonVolume } from "../Buttons/volume";
 import { TimeLine } from "../TimeLine";
 import { Box, Container } from "./styles";
 
