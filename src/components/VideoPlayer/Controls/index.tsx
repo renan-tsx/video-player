@@ -1,11 +1,3 @@
-// import {
-//   FaArrowRotateLeft,
-//   FaArrowRotateRight,
-//   FaExpand,
-//   FaVolumeLow,
-//   FaVolumeXmark,
-// } from "react-icons/fa6";
-// import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { useVideoPlayer } from "../../../hooks/useVideoPlayer";
 import { ButtonFullScreen } from "../Buttons/fullScreen";
 import { ButtonMute } from "../Buttons/mute";
