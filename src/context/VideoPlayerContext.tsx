@@ -21,6 +21,7 @@ export const VideoPlayerContextProvider = ({
   const [playing, setPlaying] = React.useState(false);
   const [muted, setMuted] = React.useState(false);
   const [time, setTime] = React.useState(0);
+  const [duration, setDuration] = React.useState<null | number>(null);
   const [buffer, setBuffer] = React.useState(0);
   const [playbackRate, setPlaybackRate] = React.useState(1);
   const [volume, setVolume] = React.useState(50);
@@ -170,6 +171,8 @@ export const VideoPlayerContextProvider = ({
     const formattedCurrentTime = formatTime(currentTime);
     const formattedDuration = formatTime(duration);
 
+    if (duration === 0) return "";
+
     return `${formattedCurrentTime} / ${formattedDuration}`;
   };
 
@@ -210,7 +213,9 @@ export const VideoPlayerContextProvider = ({
           timePlayPause,
           setTimePlayPause,
           themeVideo: theme,
-          setThemeVideo: setTheme
+          setThemeVideo: setTheme,
+          duration,
+          setDuration,
         },
         actions,
       }}

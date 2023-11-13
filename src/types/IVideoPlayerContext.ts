@@ -23,6 +23,8 @@ export interface IVideoPlayerContext {
     setTimePlayPause: React.Dispatch<React.SetStateAction<number>>;
     themeVideo: ITheme;
     setThemeVideo: React.Dispatch<React.SetStateAction<ITheme>>;
+    duration: null | number;
+    setDuration: React.Dispatch<React.SetStateAction<null | number>>;
   };
   actions: {
     onPlayPause: () => void;

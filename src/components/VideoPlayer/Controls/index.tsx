@@ -31,14 +31,13 @@ export const Controls = () => {
         <ButtonPlayPause />
         <ButtonSkip skip={"backward"} />
         <ButtonSkip skip={"forward"} />
-        {state.videoRef.current && (
-          <span>
-            {actions.hadleTimeDisplay(
-              state.time,
-              state.videoRef.current.duration
-            )}
-          </span>
-        )}
+
+        <span>
+          {actions.hadleTimeDisplay(
+            state.time,
+            state.duration ? state.duration : 0
+          )}
+        </span>
       </Box>
       <Box>
         <div className="volume">

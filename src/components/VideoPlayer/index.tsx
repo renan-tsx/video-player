@@ -26,7 +26,7 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
         document.removeEventListener("fullscreenchange", fullsSreenChange);
       };
     }
-  }, [videoRef, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
+  }, [state, videoRef, setFullScreen, setTime, setBuffer, hadleTimeBuffer]);
 
   return (
     <ThemeProvider theme={state.themeVideo}>
@@ -36,6 +36,9 @@ export const VideoPlayer = (props: IVideoPlayerProps) => {
           {...props}
           onClick={onPlayPause}
           onDoubleClick={onToggleFullScreen}
+          onLoadedData={() =>
+            state.setDuration(videoRef.current?.duration || null)
+          }
           controlsList="nodownload"
           playsInline
           controls={false}
