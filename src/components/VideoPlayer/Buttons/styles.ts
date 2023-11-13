@@ -34,6 +34,12 @@ export const Button = styled.button`
   &:hover + div {
     opacity: 1;
   }
+
+  &.btn-mute:hover + .btn-volume input {
+    width: 7rem !important;
+    align-self: end;
+    opacity: 1 !important;
+  }
 `;
 
 export const PlayBackMenu = styled.div`
@@ -51,5 +57,3 @@ export const PlayBackMenu = styled.div`
     padding: 2px;
   }
 `;
-
-
